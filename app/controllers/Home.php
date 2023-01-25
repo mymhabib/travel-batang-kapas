@@ -27,8 +27,9 @@ class Home extends controller
                     exit;
                 }
             }
+            
         } else {
-            Flasher::setFlash('Gagal', ' Anda harus login terlebih dahulu', 'danger');
+            Flasher::setFlash('Gagal.', ' Anda harus login terlebih dahulu', 'danger');
             header('Location:' . BASEURL . 'home/v1');
             exit;
         }
