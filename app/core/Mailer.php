@@ -14,11 +14,11 @@ class Mailer
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = 'tbkb.batangkapas@gmail.com';                 // SMTP username
-        $mail->Password = 'lxbrhnrvilfqfdcs';                           // SMTP password
+        $mail->Username = GOOGLE_MAIL;                 // SMTP username
+        $mail->Password = GOOGLE_APP_PASSWORD;                           // SMTP password
         $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 465;                                    // TCP port to connect to
-        $mail->setFrom('tbkb.batangkapas@gmail.com');
+        $mail->setFrom(GOOGLE_MAIL, 'Travel Batang Kapas');
 
         $mail->addAddress($to);
         $mail->Subject = $subject;
