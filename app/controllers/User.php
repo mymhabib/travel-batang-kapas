@@ -26,6 +26,7 @@
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
                 $data = [
+                    'judul' => 'Sign Up',
                     'nama' => trim($_POST['nama']),
                     'email' => trim($_POST['email']),
                     'password' => trim($_POST['password']),
@@ -99,12 +100,28 @@
                         //send email
                         //Recipients
                         $mailer = new Mailer;
-                        $mailer->send($data['email'], 'Verifikasi alamat email anda', 'Untuk bisa masuk ke website Travel Batang Kapas Bersatu, email anda harus diverifikasi terlebih dahulu.' . "<br>" . 'Klik link dibawah ini untuk melakukan verifikasi email. '. "<br>" . '<a href="' . BASEURL . 'user/verify/' . $data['token'] . '">' . BASEURL . 'user/verify/' . $data['token'] . '</a> '. "<br>" . 'Abaikan email ini jika anda tidak pernah meminta ini. ' . "<br>" . 'Terima kasih.' . "<br>" . 'Travel Batang Kapas Bersatu') ;
+                        $mailer->send($data['email'], 'Verifikasi alamat email anda', 'Untuk bisa masuk ke website Travel Batang Kapas Bersatu, email anda harus diverifikasi terlebih dahulu.' . "<br>" . 'Klik link dibawah ini untuk melakukan verifikasi email. ' . "<br>" . '<a href="' . BASEURL . 'user/verify/' . $data['token'] . '">' . BASEURL . 'user/verify/' . $data['token'] . '</a> ' . "<br>" . 'Abaikan email ini jika anda tidak pernah meminta ini. ' . "<br>" . 'Terima kasih.' . "<br>" . 'Travel Batang Kapas Bersatu');
                         header('location:' . BASEURL . 'verifikasi');
                     } else {
                         die('Terjadi kesalahan.');
                     }
                 }
+            } else {
+                $data = [
+                    'judul' => 'Sign Up',
+                    'nama' => '',
+                    'email' => '',
+                    'password' => '',
+                    'telp' => '',
+                    'token' => '',
+                    'is_activated' => '',
+                    'confirmPassword' => '',
+                    'namaError' => '',
+                    'emailError' => '',
+                    'passwordError' => '',
+                    'confirmPasswordError' => '',
+                    'telpError' => '', 
+                ];
             }
 
             $this->view('user/index', $data);
