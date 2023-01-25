@@ -127,7 +127,7 @@ if (isOnMobile()) {
                                         <option value="<?= $daftarLokasi[$i] ?>"><?= $daftarLokasi[$i] ?></option>
                                     <?php } ?>
                                 </select>
-                                <label for="dari">Dariwdjfwiufjnwiruvjnwienciewnwn</label>
+                                <label for="dari">Dari</label>
                             </div>
                         </div>
                         <div class="col-1" style="display: flex; align-items: center;">
