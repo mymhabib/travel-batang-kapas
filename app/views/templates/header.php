@@ -31,7 +31,7 @@
 			<!-- <li class="nav-item"><a class="nav-link pr-3" href="<?= BASEURL; ?>login/logout">Logout</a></li> -->
 			<li class="nav-item">
 
-				<?php if (isset($_SESSION['tbkb_user_id'])) { ?>
+				<?php if (isset($_SESSION['tbkb_user_id'])){ ?>
 					<div class="dropdown">
 						<button type="button" class="btn btn-secondary" data-bs-toggle="dropdown" aria-expanded="false">
 							<?= $_SESSION['tbkb_nama']; ?>
@@ -57,7 +57,7 @@
 					window.location.href = '<?= BASEURL; ?>user/logout';
 				});
 				$('#login-button').click(function() {
-					window.location.href = '<?= BASEURL; ?>login';
+					window.location.href = '<?= BASEURL; ?>user/login';
 				});
 				$('#orders-button').click(function() {
 					window.location.href = '<?= BASEURL; ?>home/orderList';

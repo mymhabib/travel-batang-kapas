@@ -4,7 +4,7 @@
 class Driver_model
 {
 
-    private $table = 'users';
+    private $table = 'drivers';
     private $db;
 
     public function __construct()
@@ -15,9 +15,9 @@ class Driver_model
 
     public function tambahDataDriver($data)
     {   $hashed_password = password_hash($data['password'], PASSWORD_DEFAULT);
-        $query = "INSERT INTO drivers VALUES(:userId,:nama,:telp,:email,:password)";
+        $query = "INSERT INTO drivers VALUES(:driverId,:nama,:telp,:email,:password)";
         $this->db->query($query);
-        $this->db->bind(':userId', uniqid('driver_'));
+        $this->db->bind(':driverId', uniqid('driver_'));
         $this->db->bind(':nama', $data['nama']);
         $this->db->bind(':telp', $data['telp']);
         $this->db->bind(':email', $data['email']);
@@ -36,15 +36,17 @@ class Driver_model
     }
 
 
-    // public function check_user($data){
-    //     $query = "SELECT * FROM user WHERE email = :email";
-    //     $this->db->query($query);
-    //     $this->db->bind('email',$data['email']);
-    //     $this->db->execute();
-
-    //     return $this->db->rowCount();
-
-    // }
+    public function login($email, $password){
+        $this->db->query('SELECT * from drivers where email = :email');
+        $this->db->bind(':email', $email); 
+        $row = $this->db->singleLogin();
+        $passwordCheck = !empty($row) ? $row->password:'';
+        if (password_verify($password, $passwordCheck)){
+            return $row;
+        } else {
+            return false;
+        }
+    }
 
 
 }

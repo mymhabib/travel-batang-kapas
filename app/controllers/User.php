@@ -1,9 +1,18 @@
 <?php
 class User extends Controller
 {
+    public function index(){
+        header('location:' . BASEURL . 'user/login');
+    }
 
     public function registration()
     {
+        if (isset($_SESSION['tbkb_driver_id'])) {
+            header('location:' . BASEURL . 'verifikasi/berhasil');
+        }
+        if (isset($_SESSION['tbkb_user_id'])) {
+            header('location:' . BASEURL . 'home');
+        }
 
         $data = [
             'judul' => 'Sign Up',
@@ -142,6 +151,12 @@ class User extends Controller
 
     public function login()
     {
+        if (isset($_SESSION['tbkb_driver_id'])) {
+            header('location:' . BASEURL . 'verifikasi/berhasil');
+        }
+        if (isset($_SESSION['tbkb_user_id'])) {
+            header('location:' . BASEURL . 'home');
+        }
 
         $data = [
             'judul' => 'Login',
