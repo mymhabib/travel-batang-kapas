@@ -54,7 +54,7 @@
 			</li>
 			<script>
 				$('#logout-button').click(function() {
-					window.location.href = '<?= BASEURL; ?>login/logout';
+					window.location.href = '<?= BASEURL; ?>user/logout';
 				});
 				$('#login-button').click(function() {
 					window.location.href = '<?= BASEURL; ?>login';

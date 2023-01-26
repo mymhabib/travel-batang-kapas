@@ -36,7 +36,7 @@
                             <div class="card-body" align="center">
                                 <h5 class="card-title">Verifikasi Email</h5>
                                 <p class="card-text">Silahkan melakukan verifikasi terlebih dahulu sebelum masuk. Link verifikasi email telah dikirim ke email anda. Pastikan untuk memeriksa folder spam jika anda tidak menemukan email verifikasi.</p>
-                                <a href="<?= BASEURL; ?>login" class="btn btn-primary">Masuk</a>
+                                <a href="<?= BASEURL; ?>user/login" class="btn btn-primary">Masuk</a>
                             </div>
                         </div>
                     </div>

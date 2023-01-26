@@ -1,7 +1,7 @@
 <script>
      //if user click browser reload button or F5, redirect the page to this page
     if (performance.navigation.type == 1){
-        window.location.href = "<?= BASEURL; ?>login";
+        window.location.href = "<?= BASEURL; ?>user/login";
     }
 </script>
 <head>
@@ -36,7 +36,7 @@
                         <div class="col-md-9 col-lg-8 mx-auto">
                             <img src="<?= BASEURL; ?>img/tbkb.png" alt="logotbkb" style="width:440px;" class="img-fluid">
                             <!-- Sign In Form -->
-                            <form class="row g-3" style="margin-top: 10px; position: center; padding-left: 5px;" action="<?= BASEURL; ?>login" method="POST">
+                            <form class="row g-3" style="margin-top: 10px; position: center; padding-left: 5px;" action="<?= BASEURL; ?>user/login" method="POST">
                                 <div class="form-floating mb-1">
                                     <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan email *" value="<?php echo !empty($data['email']) ? $data['email'] : '' ?>">
                                     <label for=" floatingInput">Email</label>
@@ -56,7 +56,7 @@
                                 </div>
                             </form>
                             <div class="mb-3">
-                                <p>Belum punya akun? <a class="link-secondary" href="<?= BASEURL; ?>user" style="text-decoration: none;">Daftar.</a></p>
+                                <p>Belum punya akun? <a class="link-secondary" href="<?= BASEURL; ?>user/registration" style="text-decoration: none;">Daftar.</a></p>
                             </div>
                         </div>
                     </div>

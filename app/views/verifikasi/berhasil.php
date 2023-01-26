@@ -36,7 +36,7 @@
                             <div class="card-body" align="center">
                                 <h5 class="card-title">Email Terverifikasi</h5>
                                 <p class="card-text">Email anda telah berhasil diverifikasi. Silakan masuk.</p>
-                                <a href="<?= BASEURL; ?>login" class="btn btn-primary">Masuk</a>
+                                <a href="<?= BASEURL; ?>user/login" class="btn btn-primary">Masuk</a>
                             </div>
                         </div>
                     </div>
