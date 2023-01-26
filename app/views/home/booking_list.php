@@ -39,12 +39,12 @@ function isOnMobile()
     </div>
     <div class="row row-cols-sm-2 mt-4 pt-4">
         <?php foreach ($data['bookings'] as $book) : ?>
-            <a href="<?= BASEURL; ?>home/bookingDetail/<?= $book['bookingId']; ?>" style="text-decoration:none;">
+            <a href="<?php echo BASEURL; ?>home/bookingDetail/<?php echo $book['bookingId']; ?>" style="text-decoration:none;">
                 <div class="card text-center ml-4 mb-4">
                     <div class="card-body">
-                        <h5 class="card-title"><?= $book['dari']; ?> - <?= $book['tujuan']; ?></h5>
-                        <p class="text-muted card-subtitle"><?= $book['tanggal']; ?> <?= $book['jam']; ?></p>
-                        <p class="text-muted card-subtitle"><?= $book['jumlah_penumpang']; ?> Penumpang</p>
+                        <h5 class="card-title"><?php echo $book['dari']; ?> - <?php echo $book['tujuan']; ?></h5>
+                        <p class="text-muted card-subtitle"><?php echo $book['tanggal']; ?> <?php echo $book['jam']; ?></p>
+                        <p class="text-muted card-subtitle"><?php echo $book['jumlah_penumpang']; ?> Penumpang</p>
                         <?php
                         if ($book['driverId'] == 0) {
                             echo 
@@ -66,13 +66,12 @@ function isOnMobile()
                     </div>
                 </div>
             </a>
-            </form>
         <?php endforeach; ?>
     </div>
     <br>
     <br>
     <br>
-    <p class="text-muted text-center align-middle"><?= $data['kosong']; ?></p>
+    <p class="text-muted text-center align-middle"><?php echo $data['kosong']; ?></p>
 </div>
 <script>
 </script>

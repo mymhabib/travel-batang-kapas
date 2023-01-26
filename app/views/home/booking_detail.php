@@ -41,9 +41,11 @@ $driverDetail = $data['driver_detail'];
                 <div class="card-body">
                     <!-- <h4 class="card-title">Pesanan anda</h4> -->
                     <div class="card-body">
-                        <h5 class="card-title"><?= $book['dari']; ?> - <?= $book['tujuan']; ?></h5>
-                        <p class="text-muted card-subtitle"><?= $book['tanggal']; ?> <?= $book['jam']; ?></p>
-                        <p class="text-muted card-subtitle"><?= $book['jumlah_penumpang']; ?> Penumpang</p>
+                        <h5 class="card-title"><?php echo $book['dari']; ?> - <?php echo $book['tujuan']; ?></h5>
+                        <p class="text-muted card-subtitle"><?php echo $book['tanggal']; ?> <?php echo $book['jam']; ?></p>
+                        <p class="text-muted card-subtitle"><?php echo $book['jumlah_penumpang']; ?> Penumpang</p>
+                        <br>
+                        <p class="text-muted card-subtitle"><p class="fw-bold card-subtitle">Titik Jemput: </p><?php echo $book['titik_jemput']; ?></p>
                     </div>
                     <div class="d-grid">
                         <?php
@@ -53,8 +55,8 @@ $driverDetail = $data['driver_detail'];
                         } else {
                         ?>
                             <div class="text-wrap badge bg-info">
-                                <h6 class="text-light card-subtitle">Driver: <br> <?= $driverDetail['nama'] ?>
-                                    <br><?= $driverDetail['telp'] ?>
+                                <h6 class="text-light card-subtitle">Driver: <br> <?php echo $driverDetail['nama'] ?>
+                                    <br><?php echo $driverDetail['telp'] ?>
                                 </h6>
                             </div>
                         <?php
@@ -71,8 +73,8 @@ $driverDetail = $data['driver_detail'];
         </div>
 
         <div class="modal fade pt-5" data-bs-backdrop="static" data-bs-keyboard="false" id="modalHapus" tabindex="-1" aria-labelledby="judulModalHapus" aria-hidden="true">
-            <form class="g-3" style="margin-top: 100px; position: center; padding-left: 5px; padding-right: 5px;" action="<?= BASEURL; ?>home/hapusbooking" method="POST">
-                <input type="hidden" name="bookingId" id="bookingId" value="<?= $data['booking_detail']['bookingId']; ?>">
+            <form class="g-3" style="margin-top: 100px; position: center; padding-left: 5px; padding-right: 5px;" action="<?php echo BASEURL; ?>home/hapusbooking" method="POST">
+                <input type="hidden" name="bookingId" id="bookingId" value="<?php echo $data['booking_detail']['bookingId']; ?>">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -100,9 +102,11 @@ $driverDetail = $data['driver_detail'];
                 <div class="card-body">
                     <!-- <h5 class="card-title"></h5> -->
                     <div class="card-body">
-                        <h5 class="card-title"><?= $book['dari']; ?> - <?= $book['tujuan']; ?></h5>
-                        <p class="text-muted card-subtitle"><?= $book['tanggal']; ?> <?= $book['jam']; ?></p>
-                        <p class="text-muted card-subtitle"><?= $book['jumlah_penumpang']; ?> Penumpang</p>
+                        <h5 class="card-title"><?php echo $book['dari']; ?> - <?php echo $book['tujuan']; ?></h5>
+                        <p class="text-muted card-subtitle"><?php echo $book['tanggal']; ?> <?php echo $book['jam']; ?></p>
+                        <p class="text-muted card-subtitle"><?php echo $book['jumlah_penumpang']; ?> Penumpang</p>
+                        <br>
+                        <p class="text-muted card-subtitle"><p class="fw-bold card-subtitle">Titik Jemput: </p><?php echo $book['titik_jemput']; ?></p>
                     </div>
                     <div class="d-grid">
                     <?php
@@ -112,8 +116,8 @@ $driverDetail = $data['driver_detail'];
                         } else {
                         ?>
                             <div class="text-wrap badge bg-info">
-                                <h6 class="text-light card-subtitle">Driver: <br> <?= $driverDetail['nama'] ?>
-                                    <br><?= $driverDetail['telp'] ?>
+                                <h6 class="text-light card-subtitle">Driver: <br> <?php echo $driverDetail['nama'] ?>
+                                    <br><?php echo $driverDetail['telp'] ?>
                                 </h6>
                             </div>
                         <?php
@@ -129,8 +133,8 @@ $driverDetail = $data['driver_detail'];
             </div>
         </div>
         <div class="modal fade pt-5" data-bs-backdrop="static" data-bs-keyboard="false" id="modalHapus" tabindex="-1" aria-labelledby="judulModalHapus" aria-hidden="true">
-            <form class="g-3" style="margin-top: 100px; position: center; padding-left: 5px; padding-right: 5px;" action="<?= BASEURL; ?>home/hapusbooking" method="POST">
-                <input type="hidden" name="bookingId" id="bookingId" value="<?= $data['booking_detail']['bookingId']; ?>">
+            <form class="g-3" style="margin-top: 100px; position: center; padding-left: 5px; padding-right: 5px;" action="<?php echo BASEURL; ?>home/hapusbooking" method="POST">
+                <input type="hidden" name="bookingId" id="bookingId" value="<?php echo $data['booking_detail']['bookingId']; ?>">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">

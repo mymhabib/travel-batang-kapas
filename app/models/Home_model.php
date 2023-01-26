@@ -13,7 +13,7 @@ class Home_model
 
     public function tambahDataBooking($data)
     {
-        $query = "INSERT INTO bookings VALUES(:bookingId,:userId,:dari,:tujuan,:tanggal,:jam,:jumlah,0,0)";
+        $query = "INSERT INTO bookings VALUES(:bookingId,:userId,:dari,:tujuan,:tanggal,:jam,:jumlah,:titikJemput,0,0)";
         $this->db->query($query);
         $this->db->bind(':bookingId', uniqid('booking'));
         $this->db->bind(':userId', $_SESSION['tbkb_user_id']);
@@ -22,6 +22,7 @@ class Home_model
         $this->db->bind(':tanggal', $data['tanggal']);
         $this->db->bind(':jam', $data['jam']);
         $this->db->bind(':jumlah', $data['jumlah']);
+        $this->db->bind(':titikJemput', $data['titikJemput']);
 
         $this->db->execute();
 

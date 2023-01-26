@@ -9,7 +9,7 @@ class Home_driver extends controller
             exit;
         }
         if (isset($_SESSION['tbkb_driver_id'])) {
-            $data['judul'] = 'Pesanan Anda';
+            $data['judul'] = 'List Pesanan';
             $data['kosong'] = '';
             $data['bookings'] = $this->model('Home_driver_model')->getAllBooking();
             if (count($data['bookings']) <= 0) {
@@ -23,19 +23,36 @@ class Home_driver extends controller
         }
     }
 
-    public function bookingDetail($bookingId)
+
+    public function acceptBooking()
     {
         if (isset($_SESSION['tbkb_driver_id'])) {
-            $data['judul'] = 'List Pesanan';
-            $data['booking_detail'] = $this->model('Home_driver_model')->getOneBooking($bookingId);
-            $data['driver_detail'] = $this->model('Home_driver_model')->getDriverInfo($data['booking_detail']['driverId']);
-            if (!($data['booking_detail']) or ($data['booking_detail']['userId'] != $_SESSION['tbkb_user_id'])) {
-                Flasher::setFlash('Gagal', ' Data tidak ditemukan', 'danger');
-                header('Location:' . BASEURL . 'home_driver/bookingList');
+            if ($this->model('Home_driver_model')->terimaBooking() > 0) {
+                Flasher::setFlash('Pesanan', ' diterima', 'success');
+                header('Location:' . BASEURL . 'home_driver');
+                exit;
+            } else {
+                Flasher::setFlash('Pesanan', ' gagal diterima', 'danger');
+                header('Location:' . BASEURL . 'home_driver');
                 exit;
             }
+        } else {
+            header('Location:' . BASEURL . 'home/v1');
+            exit;
+        }
+    }
+
+    public function bookingList()
+    {
+        if (isset($_SESSION['tbkb_driver_id'])) {
+            $data['judul'] = 'Pesanan yang anda terima';
+            $data['kosong'] = '';
+            $data['acc_bookings'] = $this->model('Home_driver_model')->getAllAcceptedBooking();
+            if (count($data['acc_bookings']) <= 0) {
+                $data['kosong'] = 'Tidak ada data';
+            }
             $this->view('templates/header', $data);
-            $this->view('home_driver/booking_detail', $data);
+            $this->view('home_driver/booking_list', $data);
             $this->view('templates/footer');
         } else {
             header('Location:' . BASEURL . 'home/v1');

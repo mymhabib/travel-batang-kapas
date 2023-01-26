@@ -22,7 +22,7 @@ class Home extends controller
             header('location:' . BASEURL . 'home_driver');
         }
         if (isset($_SESSION['tbkb_user_id'])) {
-            if (($_POST['dari'] == "-") || ($_POST['tujuan'] == "-") || empty($_POST['tanggal']) || ($_POST['jam'] == "0")) {
+            if (($_POST['dari'] == "-") || ($_POST['tujuan'] == "-") || empty($_POST['tanggal']) || ($_POST['jam'] == "0") | empty($_POST['titikJemput'])) {
                 Flasher::setFlash('Gagal', ' Mohon untuk mengisi semua field', 'danger');
                 header('Location:' . BASEURL . 'home/v1');
                 exit;
@@ -98,7 +98,7 @@ class Home extends controller
                 header('Location:' . BASEURL . 'home/bookingList');
                 exit;
             } else {
-                Flasher::setFlash('gagal', $_POST['bookingId'], 'danger');
+                Flasher::setFlash('gagal', 'dihapus', 'danger');
                 header('Location:' . BASEURL . 'home/bookingList');
                 exit;
             }

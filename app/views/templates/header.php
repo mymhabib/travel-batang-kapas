@@ -19,6 +19,7 @@
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	
 </head>
 
 <nav class="navbar navbar-expand navbar-light bg-light fixed-top">
@@ -55,7 +56,7 @@
 						</button>
 						<ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
 							<li>
-								<a class="dropdown-item home-driver-button">Beranda</a>
+								<a class="dropdown-item home-button">Beranda</a>
 							</li>
 							<li>
 								<a class="dropdown-item" id="bookings-driver-button">Pesanan yang anda terima</a>
@@ -87,9 +88,6 @@
 				});
 				$('#bookings-driver-button').click(function() {
 					window.location.href = '<?= BASEURL; ?>home_driver/bookingList';
-				});
-				$('.home-driver-button').click(function() {
-					window.location.href = '<?= BASEURL; ?>home_driver';
 				});
 			</script>
 		</ul>

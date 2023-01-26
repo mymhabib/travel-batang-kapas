@@ -45,31 +45,35 @@ if (isOnMobile()) {
         <div class="card rounded-lg" style="width: 20rem;" align="center">
             <div class="card-body">
                 <h5 class="card-title">Where to go</h5>
-                <form class="row g-3" style="margin-top: 10px; position: center; justify-content-md-center; padding-left: 5px;" action="<?= BASEURL; ?>home/booking" method="POST">
+                <form class="row g-3" style="margin-top: 10px; position: center; justify-content-md-center; padding-left: 5px;" action="<?php echo BASEURL; ?>home/booking" method="POST">
+                    <div class="form">
+                        <input type="text" class="form-control" id="tanggal" name="tanggal" placeholder="Tanggal Keberangkatan" readonly>
+                    </div>
                     <div class="form-floating">
                         <select class="form-select" id="dari" name="dari" aria-label="dari">
                             <?php
                             for ($i = 0; $i < count($daftarLokasi); $i++) { ?>
-                                <option value="<?= $daftarLokasi[$i] ?>"><?= $daftarLokasi[$i] ?></option>
+                                <option value="<?php echo $daftarLokasi[$i] ?>"><?php echo $daftarLokasi[$i] ?></option>
                             <?php } ?>
                         </select>
                         <label for="dari">Dari</label>
                     </div>
                     <div>
                         <!-- make an image as swap button -->
-                        <img src="<?= BASEURL; ?>img/swap-vertical.png" alt="swap" id="tombol-swap" onclick="swap()" style="width: 20px; height: 20px;">
+                        <img src="<?php echo BASEURL; ?>img/swap-vertical.png" alt="swap" id="tombol-swap" onclick="swap()" style="width: 20px; height: 20px;">
                     </div>
                     <div class="form-floating">
                         <select class="form-select" id="tujuan" name="tujuan" aria-label="tujuan">
                             <?php
                             for ($i = 0; $i < count($daftarLokasi); $i++) { ?>
-                                <option value="<?= $daftarLokasi[$i] ?>"><?= $daftarLokasi[$i] ?></option>
+                                <option value="<?php echo $daftarLokasi[$i] ?>"><?php echo $daftarLokasi[$i] ?></option>
                             <?php } ?>
                         </select>
                         <label for="dari">Tujuan</label>
                     </div>
-                    <div class="form">
-                        <input type="text" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan tanggal" readonly>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="titikJemput" name="titikJemput" placeholder="Titik Jemput">
+                        <label for="jumlah">Titik Jemput</label>
                     </div>
                     <div class="form">
                         <div class="form-floating mb-1">
@@ -117,14 +121,14 @@ if (isOnMobile()) {
         <div class="card rounded-sm" style="width: 35rem;" align="center">
             <div class="card-body">
                 <h5 class="card-title">Where to go</h5>
-                <form class="row g-3" style="margin-top: 10px; position: center; padding-left: 5px;" action="<?= BASEURL; ?>home/booking" method="POST">
+                <form class="row g-3" style="margin-top: 10px; position: center; padding-left: 5px;" action="<?php echo BASEURL; ?>home/booking" method="POST">
                     <div class="row g-2 justify-content-md-center">
                         <div class="col-5">
                             <div class="form-floating">
                                 <select class="form-select" id="dari" name="dari" aria-label="dari">
                                     <?php
                                     for ($i = 0; $i < count($daftarLokasi); $i++) { ?>
-                                        <option value="<?= $daftarLokasi[$i] ?>"><?= $daftarLokasi[$i] ?></option>
+                                        <option value="<?php echo $daftarLokasi[$i] ?>"><?php echo $daftarLokasi[$i] ?></option>
                                     <?php } ?>
                                 </select>
                                 <label for="dari">Dari</label>
@@ -132,7 +136,7 @@ if (isOnMobile()) {
                         </div>
                         <div class="col-1" style="display: flex; align-items: center;">
 
-                            <img src="<?= BASEURL; ?>img/swap-horizontal.png" class="align-top mx-auto" alt="swap" id="tombol-swap" onclick="swap()" style="width: 20px; height: 20px;">
+                            <img src="<?php echo BASEURL; ?>img/swap-horizontal.png" class="align-top mx-auto" alt="swap" id="tombol-swap" onclick="swap()" style="width: 20px; height: 20px;">
                         </div>
                         <!-- <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2 rounded-c" id="tombol-swap" onclick="swap()" type="button">Pesan</button> -->
                         <div class="col-5">
@@ -140,16 +144,20 @@ if (isOnMobile()) {
                                 <select class="form-select" id="tujuan" name="tujuan" aria-label="tujuan">
                                     <?php
                                     for ($i = 0; $i < count($daftarLokasi); $i++) { ?>
-                                        <option value="<?= $daftarLokasi[$i] ?>"><?= $daftarLokasi[$i] ?></option>
+                                        <option value="<?php echo $daftarLokasi[$i] ?>"><?php echo $daftarLokasi[$i] ?></option>
                                     <?php } ?>
                                 </select>
                                 <label for="ke">Tujuan</label>
                             </div>
                         </div>
                     </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="titikJemput" name="titikJemput" placeholder="Titik Jemput">
+                        <label for="jumlah">Titik Jemput</label>
+                    </div>
                     <div class="form-floating mb-1">
                         <input type="text" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan tanggal" readonly>
-                        <label for=" floatingInput">Tanggal</label>
+                        <label for=" floatingInput">Tanggal Keberangkatan</label>
                     </div>
                     <div class="form-floating mb-1">
                         <select class="form-select" id="jam" name="jam" aria-label="jam">
@@ -180,7 +188,6 @@ if (isOnMobile()) {
                         </select>
                         <label for="jumlah">Jumlah Penumpang</label>
                     </div>
-
                     <div class="d-grid">
                         <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Pesan</button>
                     </div>

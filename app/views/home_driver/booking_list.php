@@ -38,41 +38,89 @@ function isOnMobile()
         </div>
     </div>
     <div class="row row-cols-sm-2 mt-4 pt-4">
-        <?php foreach ($data['bookings'] as $ord) : ?>
-            <a href="<?= BASEURL; ?>home/bookingDetail/<?= $ord['bookingId']; ?>" style="text-decoration:none;">
+        <?php $counter = 1; ?>
+        <?php foreach ($data['acc_bookings'] as $ord) : ?>
+            <?php $counter++; ?>
+            <a href="" data-bs-toggle="modal" data-bs-target="#modalTerima<?php echo $counter;?>">
                 <div class="card text-center ml-4 mb-4">
                     <div class="card-body">
-                        <h5 class="card-title"><?= $ord['dari']; ?> - <?= $ord['tujuan']; ?></h5>
-                        <p class="text-muted card-subtitle"><?= $ord['tanggal']; ?> <?= $ord['jam']; ?></p>
-                        <p class="text-muted card-subtitle"><?= $ord['jumlah_penumpang']; ?> Penumpang</p>
-                        <?php
-                        if ($ord['driverId'] == 0) {
-                            echo 
-                            '<div class="text-wrap badge bg-secondary">
-                            <p class="text-light card-subtitle">Belum ada driver</p>
-                            </div>';
-                        } else if ($ord['selesai'] == 1) {
-                            echo 
-                            '<div class="text-wrap badge bg-success">
-                            <p class="text-light card-subtitle">Perjalanan selesai</p>
-                            </div>';
-                        }else if ($ord['driverId'] != 0){
-                            echo 
-                            '<div class="text-wrap badge bg-info">
-                            <p class="text-light card-subtitle">Sudah ada driver</p>
-                            </div>';
-                        }
-                        ?>
+                        <h5 class="card-title"><?php echo $ord['dari']; ?> - <?php echo $ord['tujuan']; ?></h5>
+                        <p class="text-muted card-subtitle"><?php echo $ord['tanggal']; ?> <?php echo $ord['jam']; ?></p>
+                        <p class="text-muted card-subtitle"><?php echo $ord['jumlah_penumpang']; ?> Penumpang</p>
                     </div>
                 </div>
             </a>
-            </form>
+            <!-- Modal Terima pesanan -->
+            <div class="modal fade pt-5" data-bs-backdrop="static" data-bs-keyboard="false" id="modalTerima<?php echo $counter;?>" tabindex="-1" aria-labelledby="judulmodalTerima<?php echo $counter;?>" aria-hidden="true">
+                <form class="g-3" style="margin-top: 100px; position: center; padding-left: 5px; padding-right: 5px;" action="<?php echo BASEURL; ?>home_driver/acceptBooking" method="POST">
+                    <input type="hidden" name="bookingId" id="bookingId" value="<?php echo $ord['bookingId']; ?>">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title mx-auto" id="modalLabelHapusBooking">Terima Pesanan</h5>
+                            </div>
+                            <div class="modal-body">
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="dari" name="dari" value="<?php echo $ord['dari']; ?>" readonly>
+                                            <label for="dari">Dari</label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="tujuan" name="tujuan" value="<?php echo $ord['tujuan']; ?>" readonly>
+                                            <label for="tujuan">Tujuan</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="tanggal" name="tanggal" value="<?php echo $ord['tanggal']; ?>" readonly>
+                                            <label for="tanggal">Tanggal</label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="jam" name="jam" value="<?php echo $ord['jam']; ?>" readonly>
+                                            <label for="jam">Jam</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="jumlah_penumpang" name="jumlah_penumpang" value="<?php echo $ord['jumlah_penumpang']; ?>" readonly>
+                                            <label for="jumlah_penumpang">Jumlah Penumpang</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="titikJemput" name="titikJemput" value="<?php echo $ord['titik_jemput']; ?>" readonly>
+                                            <label for="titikJemput">Titik Jemput</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer text-center">
+                                <button type="button" class="btn btn-lg btn-secondary btn-login text-uppercase fw-bold mb-2" data-bs-dismiss="modal" aria-label="Close">Batal</button>
+                                <button class="btn btn-lg btn-info btn-login text-uppercase fw-bold mb-2" type="submit">Terima</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         <?php endforeach; ?>
     </div>
     <br>
     <br>
     <br>
-    <p class="text-muted text-center align-middle"><?= $data['kosong']; ?></p>
+    <p class="text-muted text-center align-middle"><?php echo $data['kosong']; ?></p>
 </div>
 <script>
 
