@@ -34,17 +34,34 @@
 				<?php if (isset($_SESSION['tbkb_user_id'])){ ?>
 					<div class="dropdown">
 						<button type="button" class="btn btn-secondary" data-bs-toggle="dropdown" aria-expanded="false">
-							<?= $_SESSION['tbkb_nama']; ?>
+							<?php echo $_SESSION['tbkb_nama']; ?>
 						</button>
 						<ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
 							<li>
 								<a class="dropdown-item home-button">Beranda</a>
 							</li>
 							<li>
-								<a class="dropdown-item" id="orders-button">Pesanan Anda</a>
+								<a class="dropdown-item" id="bookings-button">Pesanan Anda</a>
 							</li>
 							<li>
 								<a class="dropdown-item" id="logout-button">Logout</a>
+							</li>
+						</ul>
+					</div>
+				<?php } elseif (isset($_SESSION['tbkb_driver_id'])){ ?>	
+					<div class="dropdown">
+						<button type="button" class="btn btn-secondary" data-bs-toggle="dropdown" aria-expanded="false"> Driver: 
+							<?php echo $_SESSION['tbkb_driver_nama']; ?>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+							<li>
+								<a class="dropdown-item home-driver-button">Beranda</a>
+							</li>
+							<li>
+								<a class="dropdown-item" id="bookings-driver-button">Pesanan yang anda terima</a>
+							</li>
+							<li>
+								<a class="dropdown-item" id="logout-driver-button">Logout</a>
 							</li>
 						</ul>
 					</div>
@@ -59,11 +76,20 @@
 				$('#login-button').click(function() {
 					window.location.href = '<?= BASEURL; ?>user/login';
 				});
-				$('#orders-button').click(function() {
-					window.location.href = '<?= BASEURL; ?>home/orderList';
+				$('#bookings-button').click(function() {
+					window.location.href = '<?= BASEURL; ?>home/bookingList';
 				});
 				$('.home-button').click(function() {
 					window.location.href = '<?= BASEURL; ?>home';
+				});
+				$('#logout-driver-button').click(function() {
+					window.location.href = '<?= BASEURL; ?>driver/logout';
+				});
+				$('#bookings-driver-button').click(function() {
+					window.location.href = '<?= BASEURL; ?>home_driver/bookingList';
+				});
+				$('.home-driver-button').click(function() {
+					window.location.href = '<?= BASEURL; ?>home_driver';
 				});
 			</script>
 		</ul>

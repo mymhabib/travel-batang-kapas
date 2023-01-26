@@ -58,6 +58,9 @@
                             <div class="mb-3">
                                 <p>Belum punya akun? <a class="link-secondary" href="<?= BASEURL; ?>user/registration" style="text-decoration: none;">Daftar.</a></p>
                             </div>
+                            <div class="mb-3">
+                                <p><a class="link-secondary" href="<?= BASEURL; ?>driver" style="text-decoration: none;">Masuk sebagai driver.</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>

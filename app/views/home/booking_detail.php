@@ -28,7 +28,7 @@ function isOnMobile()
     }
     return FALSE;
 }
-$ord = $data['order_detail'];
+$book = $data['booking_detail'];
 $driverDetail = $data['driver_detail'];
 ?>
 <div class="container" align="center">
@@ -39,15 +39,15 @@ $driverDetail = $data['driver_detail'];
         <div class="container mt-5 pt-5 row d-flex justify-content-center">
             <div class="card mx-auto rounded-sm" style="width: 30rem;">
                 <div class="card-body">
-                    <!-- <h4 class="card-title">Orderan anda</h4> -->
+                    <!-- <h4 class="card-title">Pesanan anda</h4> -->
                     <div class="card-body">
-                        <h5 class="card-title"><?= $ord['dari']; ?> - <?= $ord['tujuan']; ?></h5>
-                        <p class="text-muted card-subtitle"><?= $ord['tanggal']; ?> <?= $ord['jam']; ?></p>
-                        <p class="text-muted card-subtitle"><?= $ord['jumlah_penumpang']; ?> Penumpang</p>
+                        <h5 class="card-title"><?= $book['dari']; ?> - <?= $book['tujuan']; ?></h5>
+                        <p class="text-muted card-subtitle"><?= $book['tanggal']; ?> <?= $book['jam']; ?></p>
+                        <p class="text-muted card-subtitle"><?= $book['jumlah_penumpang']; ?> Penumpang</p>
                     </div>
                     <div class="d-grid">
                         <?php
-                        if ($ord['driverId'] == 0) {
+                        if ($book['driverId'] == 0) {
                             echo
                             '<a href="" style="text-decoration:none;" class="btn btn-danger tampilModalHapus" data-bs-toggle="modal" data-bs-target="#modalHapus"> Hapus</a>';
                         } else {
@@ -71,16 +71,16 @@ $driverDetail = $data['driver_detail'];
         </div>
 
         <div class="modal fade pt-5" data-bs-backdrop="static" data-bs-keyboard="false" id="modalHapus" tabindex="-1" aria-labelledby="judulModalHapus" aria-hidden="true">
-            <form class="g-3" style="margin-top: 100px; position: center; padding-left: 5px; padding-right: 5px;" action="<?= BASEURL; ?>home/hapusOrder" method="POST">
-                <input type="hidden" name="orderId" id="orderId" value="<?= $data['order_detail']['orderId']; ?>">
+            <form class="g-3" style="margin-top: 100px; position: center; padding-left: 5px; padding-right: 5px;" action="<?= BASEURL; ?>home/hapusbooking" method="POST">
+                <input type="hidden" name="bookingId" id="bookingId" value="<?= $data['booking_detail']['bookingId']; ?>">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modalLabelHapusOrder">Hapus Order</h5>
+                            <h5 class="modal-title" id="modalLabelHapusBooking">Hapus Pesanan</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <h6 class="text-center">Apakah anda yakin ingin menghapus order ini?</h6>
+                            <h6 class="text-center">Apakah anda yakin ingin menghapus pesanan ini?</h6>
                         </div>
                         <div class="modal-footer text-center">
                             <button type="button" class="btn btn-lg btn-secondary btn-login text-uppercase fw-bold mb-2" data-bs-dismiss="modal" aria-label="Close">Batal</button>
@@ -100,13 +100,13 @@ $driverDetail = $data['driver_detail'];
                 <div class="card-body">
                     <!-- <h5 class="card-title"></h5> -->
                     <div class="card-body">
-                        <h5 class="card-title"><?= $ord['dari']; ?> - <?= $ord['tujuan']; ?></h5>
-                        <p class="text-muted card-subtitle"><?= $ord['tanggal']; ?> <?= $ord['jam']; ?></p>
-                        <p class="text-muted card-subtitle"><?= $ord['jumlah_penumpang']; ?> Penumpang</p>
+                        <h5 class="card-title"><?= $book['dari']; ?> - <?= $book['tujuan']; ?></h5>
+                        <p class="text-muted card-subtitle"><?= $book['tanggal']; ?> <?= $book['jam']; ?></p>
+                        <p class="text-muted card-subtitle"><?= $book['jumlah_penumpang']; ?> Penumpang</p>
                     </div>
                     <div class="d-grid">
                     <?php
-                        if ($ord['driverId'] == 0) {
+                        if ($book['driverId'] == 0) {
                             echo
                             '<a href="" style="text-decoration:none;" class="btn btn-danger tampilModalHapus" data-bs-toggle="modal" data-bs-target="#modalHapus"> Hapus</a>';
                         } else {
@@ -129,16 +129,16 @@ $driverDetail = $data['driver_detail'];
             </div>
         </div>
         <div class="modal fade pt-5" data-bs-backdrop="static" data-bs-keyboard="false" id="modalHapus" tabindex="-1" aria-labelledby="judulModalHapus" aria-hidden="true">
-            <form class="g-3" style="margin-top: 100px; position: center; padding-left: 5px; padding-right: 5px;" action="<?= BASEURL; ?>home/hapusOrder" method="POST">
-                <input type="hidden" name="orderId" id="orderId" value="<?= $data['order_detail']['orderId']; ?>">
+            <form class="g-3" style="margin-top: 100px; position: center; padding-left: 5px; padding-right: 5px;" action="<?= BASEURL; ?>home/hapusbooking" method="POST">
+                <input type="hidden" name="bookingId" id="bookingId" value="<?= $data['booking_detail']['bookingId']; ?>">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modalLabelHapusOrder">Hapus Order</h5>
+                            <h5 class="modal-title" id="modalLabelHapusBooking">Hapus Pesanan</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <h6 class="text-center">Apakah anda yakin ingin menghapus order ini?</h6>
+                            <h6 class="text-center">Apakah anda yakin ingin menghapus pesanan ini?</h6>
                         </div>
                         <div class="modal-footer text-center">
                             <button type="button" class="btn btn-lg btn-secondary btn-login text-uppercase fw-bold mb-2" data-bs-dismiss="modal" aria-label="Close">Batal</button>

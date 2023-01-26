@@ -8,7 +8,7 @@ class User extends Controller
     public function registration()
     {
         if (isset($_SESSION['tbkb_driver_id'])) {
-            header('location:' . BASEURL . 'verifikasi/berhasil');
+            header('location:' . BASEURL . 'home_driver');
         }
         if (isset($_SESSION['tbkb_user_id'])) {
             header('location:' . BASEURL . 'home');
@@ -152,7 +152,7 @@ class User extends Controller
     public function login()
     {
         if (isset($_SESSION['tbkb_driver_id'])) {
-            header('location:' . BASEURL . 'verifikasi/berhasil');
+            header('location:' . BASEURL . 'home_driver');
         }
         if (isset($_SESSION['tbkb_user_id'])) {
             header('location:' . BASEURL . 'home');

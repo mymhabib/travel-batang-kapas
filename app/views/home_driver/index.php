@@ -37,32 +37,14 @@ function isOnMobile()
             <?php Flasher::flash(); ?>
         </div>
     </div>
-    <div class="row row-cols-sm-2 mt-4 pt-4">
-        <?php foreach ($data['orders'] as $ord) : ?>
-            <a href="<?= BASEURL; ?>home/orderDetail/<?= $ord['orderId']; ?>" style="text-decoration:none;">
+    <div class="row row-cols-sm-1 mt-4 pt-4">
+        <?php foreach ($data['bookings'] as $ord) : ?>
+            <a href="<?= BASEURL; ?>home/bookingDetail/<?= $ord['bookingId']; ?>" style="text-decoration:none;">
                 <div class="card text-center ml-4 mb-4">
                     <div class="card-body">
                         <h5 class="card-title"><?= $ord['dari']; ?> - <?= $ord['tujuan']; ?></h5>
                         <p class="text-muted card-subtitle"><?= $ord['tanggal']; ?> <?= $ord['jam']; ?></p>
                         <p class="text-muted card-subtitle"><?= $ord['jumlah_penumpang']; ?> Penumpang</p>
-                        <?php
-                        if ($ord['driverId'] == 0) {
-                            echo 
-                            '<div class="text-wrap badge bg-secondary">
-                            <p class="text-light card-subtitle">Belum ada driver</p>
-                            </div>';
-                        } else if ($ord['selesai'] == 1) {
-                            echo 
-                            '<div class="text-wrap badge bg-success">
-                            <p class="text-light card-subtitle">Perjalanan selesai</p>
-                            </div>';
-                        }else if ($ord['driverId'] != 0){
-                            echo 
-                            '<div class="text-wrap badge bg-info">
-                            <p class="text-light card-subtitle">Sudah ada driver</p>
-                            </div>';
-                        }
-                        ?>
                     </div>
                 </div>
             </a>
@@ -75,13 +57,5 @@ function isOnMobile()
     <p class="text-muted text-center align-middle"><?= $data['kosong']; ?></p>
 </div>
 <script>
-    function swap() {
-        let x = document.getElementById('dari').value;
-        let y = document.getElementById('tujuan').value;
-        document.getElementById('dari').value = y;
-        document.getElementById('tujuan').value = x;
-    }
-    $("#tanggal").datepicker({
-        dateFormat: "dd/mm/yy"
-    });
+
 </script>

@@ -45,7 +45,7 @@ if (isOnMobile()) {
         <div class="card rounded-lg" style="width: 20rem;" align="center">
             <div class="card-body">
                 <h5 class="card-title">Where to go</h5>
-                <form class="row g-3" style="margin-top: 10px; position: center; justify-content-md-center; padding-left: 5px;" action="<?= BASEURL; ?>home/order" method="POST">
+                <form class="row g-3" style="margin-top: 10px; position: center; justify-content-md-center; padding-left: 5px;" action="<?= BASEURL; ?>home/booking" method="POST">
                     <div class="form-floating">
                         <select class="form-select" id="dari" name="dari" aria-label="dari">
                             <?php
@@ -117,7 +117,7 @@ if (isOnMobile()) {
         <div class="card rounded-sm" style="width: 35rem;" align="center">
             <div class="card-body">
                 <h5 class="card-title">Where to go</h5>
-                <form class="row g-3" style="margin-top: 10px; position: center; padding-left: 5px;" action="<?= BASEURL; ?>home/order" method="POST">
+                <form class="row g-3" style="margin-top: 10px; position: center; padding-left: 5px;" action="<?= BASEURL; ?>home/booking" method="POST">
                     <div class="row g-2 justify-content-md-center">
                         <div class="col-5">
                             <div class="form-floating">

@@ -7,7 +7,7 @@ class Driver extends Controller
 
     public function registration()
     {
-        if (isset($_SESSION['tbkb_user_id'])) {
+        if (!isset($_SESSION['tbkb_driver_id'])) {
             header('location:' . BASEURL . 'home');
         }
 
@@ -133,7 +133,7 @@ class Driver extends Controller
         }
 
         $data = [
-            'judul' => 'Login',
+            'judul' => 'Driver Login',
             'email' => '',
             'password ' => '',
             'emailError' => '',
@@ -144,7 +144,7 @@ class Driver extends Controller
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
-                'judul' => 'Login',
+                'judul' => 'Driver Login',
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
                 'emailError' => '',
@@ -179,7 +179,7 @@ class Driver extends Controller
             }
         } else {
             $data = [
-                'judul' => 'Login',
+                'judul' => 'Driver Login',
                 'email' => '',
                 'password ' => '',
                 'emailError' => '',
@@ -194,7 +194,7 @@ class Driver extends Controller
         $_SESSION['tbkb_driver_id'] = $driver->driverId;
         $_SESSION['tbkb_driver_email'] = $driver->email;
         $_SESSION['tbkb_driver_nama'] = $driver->nama;
-        header('location:' . BASEURL . 'home');
+        header('location:' . BASEURL . 'home_driver');
     }
 
     public function logout()

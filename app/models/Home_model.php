@@ -3,7 +3,7 @@
 class Home_model
 {
 
-    private $table = 'orders';
+    private $table = 'bookings';
     private $db;
 
     public function __construct()
@@ -11,11 +11,11 @@ class Home_model
         $this->db = new Database;
     }
 
-    public function tambahDataOrder($data)
+    public function tambahDataBooking($data)
     {
-        $query = "INSERT INTO orders VALUES(:orderId,:userId,:dari,:tujuan,:tanggal,:jam,:jumlah,0,0)";
+        $query = "INSERT INTO bookings VALUES(:bookingId,:userId,:dari,:tujuan,:tanggal,:jam,:jumlah,0,0)";
         $this->db->query($query);
-        $this->db->bind(':orderId', uniqid('order'));
+        $this->db->bind(':bookingId', uniqid('booking'));
         $this->db->bind(':userId', $_SESSION['tbkb_user_id']);
         $this->db->bind(':dari', $data['dari']);
         $this->db->bind(':tujuan', $data['tujuan']);
@@ -27,31 +27,31 @@ class Home_model
 
         return $this->db->rowCount();
     }
-    public function getAllOrder()
+    public function getAllBooking()
     {
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE userId = :userId ORDER BY selesai, driverId ASC');
         $this->db->bind(':userId', $_SESSION['tbkb_user_id']);
         return $this->db->resultSet();
     }
 
-    public function getOneOrder($orderId)
+    public function getOneBooking($bookingId)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE orderId = :orderId');
-        $this->db->bind('orderId', $orderId);
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE bookingId = :bookingId');
+        $this->db->bind('bookingId', $bookingId);
         return $this->db->single();
     }
     public function hapusData()
     {
-        $orderId = $_POST['orderId'];
-        $query = 'DELETE FROM ' . $this->table . ' where orderId=:orderId';
+        $bookingId = $_POST['bookingId'];
+        $query = 'DELETE FROM ' . $this->table . ' where bookingId=:bookingId';
         $this->db->query($query);
-        $this->db->bind('orderId', $orderId);
+        $this->db->bind('bookingId', $bookingId);
         $this->db->execute();
         return $this->db->rowCount();
     }
 
     public function getDriverInfo($driverId){
-        $this->db->query('SELECT DISTINCT drivers.nama, drivers.telp, drivers.email FROM drivers INNER JOIN orders ON orders.driverId=drivers.driverId WHERE orders.driverId = :driverId');
+        $this->db->query('SELECT DISTINCT drivers.nama, drivers.telp, drivers.email FROM drivers INNER JOIN bookings ON bookings.driverId=drivers.driverId WHERE bookings.driverId = :driverId');
         $this->db->bind('driverId', $driverId);
         return $this->db->single();
     }
