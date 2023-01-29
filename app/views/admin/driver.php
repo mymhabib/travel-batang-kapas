@@ -47,11 +47,9 @@ function isOnMobile()
             <div class="card text-center ml-4 mb-4">
                 <a data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">
                     <div class="card-title" id="heading<?php echo $counter; ?>">
-                        <h2>
-                            <button class="btn" type="button" data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">
-                                <?php echo $drivers['nama']; ?>
-                            </button>
-                        </h2>
+                        <button class="btn" type="button" data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">
+                            <h5><?php echo $drivers['nama']; ?></h5>
+                        </button>
                     </div>
                 </a>
 

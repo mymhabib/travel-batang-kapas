@@ -34,10 +34,14 @@
 
 				<?php if (isset($_SESSION['tbkb_user_id'])) { ?>
 					<div class="dropdown">
-						<button type="button" class="btn btn-secondary" data-bs-toggle="dropdown" aria-expanded="false">
-							<?php echo $_SESSION['tbkb_nama']; ?>
-						</button>
+						<a data-bs-toggle="dropdown" aria-expanded="false"><img src="<?= BASEURL; ?>img/profile.png" style="width: 50px; height: 50px;"></a>
 						<ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+							<li>
+								<h6 class="dropdown-header"><?php echo $_SESSION['tbkb_nama']; ?></h6>
+							</li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
 							<li>
 								<a class="dropdown-item home-button">Beranda</a>
 							</li>
@@ -51,10 +55,14 @@
 					</div>
 				<?php } elseif (isset($_SESSION['tbkb_driver_id'])) { ?>
 					<div class="dropdown">
-						<button type="button" class="btn btn-secondary" data-bs-toggle="dropdown" aria-expanded="false"> Driver:
-							<?php echo $_SESSION['tbkb_driver_nama']; ?>
-						</button>
+						<a data-bs-toggle="dropdown" aria-expanded="false"><img src="<?= BASEURL; ?>img/profile.png" style="width: 50px; height: 50px;"></a>
 						<ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+							<li>
+								<h6 class="dropdown-header">Driver: <?php echo $_SESSION['tbkb_driver_nama']; ?></h6>
+							</li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
 							<li>
 								<a class="dropdown-item home-button">Beranda</a>
 							</li>
@@ -98,7 +106,7 @@
 					window.location.href = '<?= BASEURL; ?>admin/driver';
 				});
 				$('#driver-registration-button').click(function() {
-					window.location.href = '<?= BASEURL; ?>driver/registration'; 
+					window.location.href = '<?= BASEURL; ?>driver/registration';
 				});
 				$('#bookings-driver-button').click(function() {
 					window.location.href = '<?= BASEURL; ?>home_driver/bookingList';

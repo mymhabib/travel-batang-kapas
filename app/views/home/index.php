@@ -117,6 +117,7 @@ if (isOnMobile()) {
 <?php
 } else {
 ?>
+
     <div class="container mt-5" align="center">
         <div class="card rounded-sm" style="width: 35rem;" align="center">
             <div class="card-body">
