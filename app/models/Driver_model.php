@@ -47,6 +47,4 @@ class Driver_model
             return false;
         }
     }
-
-
 }

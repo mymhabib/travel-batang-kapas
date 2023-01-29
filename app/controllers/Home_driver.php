@@ -47,13 +47,31 @@ class Home_driver extends controller
         if (isset($_SESSION['tbkb_driver_id'])) {
             $data['judul'] = 'Pesanan yang anda terima';
             $data['kosong'] = '';
-            $data['acc_bookings'] = $this->model('Home_driver_model')->getAllAcceptedBooking();
-            if (count($data['acc_bookings']) <= 0) {
+            $data['acc_booking'] = $this->model('Home_driver_model')->getAllAcceptedBooking();
+            if (count($data['acc_booking']) <= 0) {
                 $data['kosong'] = 'Tidak ada data';
             }
             $this->view('templates/header', $data);
             $this->view('home_driver/booking_list', $data);
             $this->view('templates/footer');
+        } else {
+            header('Location:' . BASEURL . 'home/v1');
+            exit;
+        }
+    }
+
+    public function finishTrip()
+    {
+        if (isset($_SESSION['tbkb_driver_id'])) {
+            if ($this->model('Home_driver_model')->finish() > 0) {
+                Flasher::setFlash('Perjalanan', ' ini selesai', 'success');
+                header('Location:' . BASEURL . 'home_driver/bookingList');
+                exit;
+            } else {
+                Flasher::setFlash('Gagal', '', 'danger');
+                header('Location:' . BASEURL . 'home_driver/bookingList');
+                exit;
+            }
         } else {
             header('Location:' . BASEURL . 'home/v1');
             exit;

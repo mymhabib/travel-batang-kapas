@@ -1,7 +1,8 @@
 <?php
 class Driver extends Controller
 {
-    public function index(){
+    public function index()
+    {
         header('location:' . BASEURL . 'driver/login');
     }
 
@@ -9,6 +10,12 @@ class Driver extends Controller
     {
         if (!isset($_SESSION['tbkb_driver_id'])) {
             header('location:' . BASEURL . 'home');
+            exit;
+        }
+
+        if ($_SESSION['tbkb_driver_id'] != 1) {
+            header('Location:' . BASEURL . 'admin/noaccess');
+            exit;
         }
 
         $data = [
@@ -118,7 +125,7 @@ class Driver extends Controller
                 'emailError' => '',
                 'passwordError' => '',
                 'confirmPasswordError' => '',
-                'telpError' => '', 
+                'telpError' => '',
             ];
         }
 
@@ -130,6 +137,9 @@ class Driver extends Controller
     {
         if (isset($_SESSION['tbkb_user_id'])) {
             header('location:' . BASEURL . 'home');
+        }
+        if (isset($_SESSION['tbkb_driver_id'])) {
+            header('location:' . BASEURL . 'home_driver');
         }
 
         $data = [
@@ -204,9 +214,4 @@ class Driver extends Controller
         unset($_SESSION['tbkb_driver_nama']);
         header('location:' . BASEURL . 'driver/login');
     }
-
-    
-
-
-    
 }

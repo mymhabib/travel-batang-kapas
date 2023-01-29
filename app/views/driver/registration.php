@@ -72,13 +72,9 @@
                                 </div>
 
                                 <div class="d-grid">
-                                    <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Daftar</button>
+                                    <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Tambah Driver</button>
                                 </div>
-
                             </form>
-                            <div class="mb-3">
-                                <p>Sudah punya akun? <a class="link-secondary" href="<?= BASEURL; ?>driver/login" style="text-decoration: none;">Masuk.</a></p>
-                            </div>
                         </div>
                     </div>
                 </div>

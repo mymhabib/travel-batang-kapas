@@ -10,10 +10,10 @@
     }
 
 
-    .card:hover {
+    /* .card:hover {
         transform: scale(1.05);
         box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
-    }
+    } */
 </style>
 <!-- jQuery css -->
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -32,88 +32,106 @@ function isOnMobile()
 ?>
 
 <div class="container" align="center">
+    <h1>
+        <p class="text-center text-uppercase fw-bold">Daftar Pesanan yang Anda Terima</p>
+    </h1>
     <div class="container mt-4" align="center">
         <div class="col-lg-4">
             <?php Flasher::flash(); ?>
         </div>
     </div>
-    <div class="row row-cols-sm-2 mt-4 pt-4">
+    <div class="row row-cols-sm-1 cols-xl-1 mt-4 pt-4" style="max-width: 400px;">
         <?php $counter = 1; ?>
-        <?php foreach ($data['acc_bookings'] as $ord) : ?>
+        <?php foreach ($data['acc_booking'] as $book) : ?>
             <?php $counter++; ?>
-            <a href="" data-bs-toggle="modal" data-bs-target="#modalTerima<?php echo $counter;?>">
-                <div class="card text-center ml-4 mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $ord['dari']; ?> - <?php echo $ord['tujuan']; ?></h5>
-                        <p class="text-muted card-subtitle"><?php echo $ord['tanggal']; ?> <?php echo $ord['jam']; ?></p>
-                        <p class="text-muted card-subtitle"><?php echo $ord['jumlah_penumpang']; ?> Penumpang</p>
+            <div class="card text-center ml-4 mb-4">
+                <a data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">
+                    <div class="card-title" id="heading<?php echo $counter; ?>">
+                        <h2>
+                            <button class="btn" type="button" data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">
+                                <?php echo $book['dari']; ?> - <?php echo $book['tujuan']; ?>
+                                <p class=" text-muted card-subtitle"><?php echo $book['tanggal']; ?> <?php echo $book['jam']; ?></p>
+                            </button>
+                        </h2>
                     </div>
-                </div>
-            </a>
-            <!-- Modal Terima pesanan -->
-            <div class="modal fade pt-5" data-bs-backdrop="static" data-bs-keyboard="false" id="modalTerima<?php echo $counter;?>" tabindex="-1" aria-labelledby="judulmodalTerima<?php echo $counter;?>" aria-hidden="true">
-                <form class="g-3" style="margin-top: 100px; position: center; padding-left: 5px; padding-right: 5px;" action="<?php echo BASEURL; ?>home_driver/acceptBooking" method="POST">
-                    <input type="hidden" name="bookingId" id="bookingId" value="<?php echo $ord['bookingId']; ?>">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title mx-auto" id="modalLabelHapusBooking">Terima Pesanan</h5>
-                            </div>
-                            <div class="modal-body">
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="dari" name="dari" value="<?php echo $ord['dari']; ?>" readonly>
-                                            <label for="dari">Dari</label>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="tujuan" name="tujuan" value="<?php echo $ord['tujuan']; ?>" readonly>
-                                            <label for="tujuan">Tujuan</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="tanggal" name="tanggal" value="<?php echo $ord['tanggal']; ?>" readonly>
-                                            <label for="tanggal">Tanggal</label>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="jam" name="jam" value="<?php echo $ord['jam']; ?>" readonly>
-                                            <label for="jam">Jam</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="jumlah_penumpang" name="jumlah_penumpang" value="<?php echo $ord['jumlah_penumpang']; ?>" readonly>
-                                            <label for="jumlah_penumpang">Jumlah Penumpang</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="titikJemput" name="titikJemput" value="<?php echo $ord['titik_jemput']; ?>" readonly>
-                                            <label for="titikJemput">Titik Jemput</label>
-                                        </div>
+                </a>
+
+                <div id="collapse<?php echo $counter; ?>" class="collapse hide" aria-labelledby="heading<?php echo $counter; ?>" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form mb-2">
+                                        <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $book['nama']; ?>" readonly>
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-footer text-center">
-                                <button type="button" class="btn btn-lg btn-secondary btn-login text-uppercase fw-bold mb-2" data-bs-dismiss="modal" aria-label="Close">Batal</button>
-                                <button class="btn btn-lg btn-info btn-login text-uppercase fw-bold mb-2" type="submit">Terima</button>
+
+                            <div class="form-group">
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" id="telp<?php echo $counter; ?>" name="telp" value="<?php echo $book['telp']; ?>" readonly>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary copy-button" type="button" id="copy-button<?php echo $counter; ?>"><img src="<?= BASEURL; ?>img/copy-icon.png" alt="copy" class="copy-button" style="width: 20px; height: 20px;"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <textarea type="text" class="form-control" style="display: block; overflow:hidden; resize:none; height:100px; " id="dari" name="dari" value="<?php echo $book['dari']; ?>" readonly><?php echo $book['dari']; ?>
+                                        </textarea>
+                                        <label for="dari">Dari</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <textarea type="text" class="form-control" style="display: block; overflow:hidden; resize:none; height:100px; " id="tujuan" name="tujuan" value="<?php echo $book['tujuan']; ?>" readonly><?php echo $book['tujuan']; ?>
+                                        </textarea>
+                                        <label for="tujuan">Tujuan</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="tanggal" name="tanggal" value="<?php echo $book['tanggal']; ?>" readonly>
+                                        <label for="tanggal">Tanggal</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="jam" name="jam" value="<?php echo $book['jam']; ?>" readonly>
+                                        <label for="jam">Jam</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="jumlah_penumpang" name="jumlah_penumpang" value="<?php echo $book['jumlah_penumpang']; ?>" readonly>
+                                        <label for="jumlah_penumpang">Jumlah Penumpang</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <textarea type="text" class="form-control" style="display: block; overflow:hidden; resize:none; height:80px; " id="titikJemput" name="titikJemput" value="<?php echo $book['titik_jemput']; ?>" readonly><?php echo $book['titik_jemput']; ?>
+                                        </textarea>
+                                        <label for="titikJemput">Titik Jemput</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <div class="modal-footer text-center">
+                            <form class="g-3" action="<?php echo BASEURL; ?>home_driver/finishTrip" method="POST">
+                                <input type="hidden" name="bookingId" id="bookingId" value="<?php echo $book['bookingId']; ?>">
+                                <button type="button" class="btn btn-lg btn-secondary btn-login text-uppercase fw-bold mb-2" data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">Tutup</button>
+                                <button class="btn btn-lg btn-success btn-login text-uppercase fw-bold mb-2" type="submit">Selesai</button>
+                            </form>
+                        </div>
                     </div>
-                </form>
+                </div>
             </div>
         <?php endforeach; ?>
     </div>
@@ -123,5 +141,11 @@ function isOnMobile()
     <p class="text-muted text-center align-middle"><?php echo $data['kosong']; ?></p>
 </div>
 <script>
-
+    document.querySelectorAll('.copy-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const telp = this.parentElement.previousElementSibling;
+            telp.select();
+            document.execCommand("copy");
+        });
+    });
 </script>

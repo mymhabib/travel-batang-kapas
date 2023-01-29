@@ -45,31 +45,3 @@
         </div>
     </div>
 </div>
-
-
-<!-- <div class="container-sm col-4 shadow" style="margin: 100px auto;">
-    <form class="row g-3" style="margin-top: 10px; position: center; padding-left: 5px;" action="<?= BASEURL; ?>login" method="POST">
-        <div class="col-12 mb-3">
-            <h2>
-                PT. Purna Wahana Lestari
-            </h2>
-        </div>
-        <div class="col-12 mb-1">
-            <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan email *">
-            <span class="invalidFeedback" style="color:red">
-                <?php echo $data['emailError']; ?>
-            </span>
-        </div>
-        <div class="col-12 mb-1">
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password *">
-            <span class="invalidFeedback" style="color:red">
-                <?php echo $data['passwordError']; ?>
-            </span>
-        </div>
-        <div class="col-12 mb-1">
-            <button type="submit" id="submit" class="btn btn-primary container-fluid" style=" font-family: 'Poppins', sans-serif; background-color: #54BAB9;">Login</button>
-        </div>
-        <div class="col-12 mb-3">
-        </div>
-    </form>
-</div> -->

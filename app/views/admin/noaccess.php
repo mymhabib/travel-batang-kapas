@@ -1,10 +1,3 @@
-<script>
-    //if user click browser reload button or F5, redirect the page to this page
-    // if (performance.navigation.type == 1){
-    //     window.location.href = "<?= BASEURL; ?>login";
-    // }
-</script>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,9 +27,9 @@
                     <div class="row justify-content-center" >
                         <div class="card" style="width: 18rem;">
                             <div class="card-body" align="center">
-                                <h5 class="card-title">Email Terverifikasi</h5>
-                                <p class="card-text">Email anda telah berhasil diverifikasi. Silakan masuk.</p>
-                                <a href="<?= BASEURL; ?>user/login" class="btn btn-primary">Masuk</a>
+                                <h5 class="card-title">TIDAK ADA AKSES</h5>
+                                <p class="card-text">Hanya admin yang memiliki akses ke halaman ini.</p>
+                                <a href="<?= BASEURL; ?>home_driver" class="btn btn-danger">Kembali</a>
                             </div>
                         </div>
                     </div>

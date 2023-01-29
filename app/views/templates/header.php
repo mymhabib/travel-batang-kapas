@@ -19,7 +19,7 @@
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-	
+
 </head>
 
 <nav class="navbar navbar-expand navbar-light bg-light fixed-top">
@@ -32,7 +32,7 @@
 			<!-- <li class="nav-item"><a class="nav-link pr-3" href="<?= BASEURL; ?>login/logout">Logout</a></li> -->
 			<li class="nav-item">
 
-				<?php if (isset($_SESSION['tbkb_user_id'])){ ?>
+				<?php if (isset($_SESSION['tbkb_user_id'])) { ?>
 					<div class="dropdown">
 						<button type="button" class="btn btn-secondary" data-bs-toggle="dropdown" aria-expanded="false">
 							<?php echo $_SESSION['tbkb_nama']; ?>
@@ -49,9 +49,9 @@
 							</li>
 						</ul>
 					</div>
-				<?php } elseif (isset($_SESSION['tbkb_driver_id'])){ ?>	
+				<?php } elseif (isset($_SESSION['tbkb_driver_id'])) { ?>
 					<div class="dropdown">
-						<button type="button" class="btn btn-secondary" data-bs-toggle="dropdown" aria-expanded="false"> Driver: 
+						<button type="button" class="btn btn-secondary" data-bs-toggle="dropdown" aria-expanded="false"> Driver:
 							<?php echo $_SESSION['tbkb_driver_nama']; ?>
 						</button>
 						<ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
@@ -61,6 +61,14 @@
 							<li>
 								<a class="dropdown-item" id="bookings-driver-button">Pesanan yang anda terima</a>
 							</li>
+							<?php if ($_SESSION['tbkb_driver_id'] == 1) { ?>
+								<li>
+									<a class="dropdown-item" id="driver-button">Daftar Driver</a>
+								</li>
+								<li>
+									<a class="dropdown-item" id="driver-registration-button">Tambah Driver</a>
+								</li>
+							<?php } ?>
 							<li>
 								<a class="dropdown-item" id="logout-driver-button">Logout</a>
 							</li>
@@ -85,6 +93,12 @@
 				});
 				$('#logout-driver-button').click(function() {
 					window.location.href = '<?= BASEURL; ?>driver/logout';
+				});
+				$('#driver-button').click(function() {
+					window.location.href = '<?= BASEURL; ?>admin/driver';
+				});
+				$('#driver-registration-button').click(function() {
+					window.location.href = '<?= BASEURL; ?>driver/registration'; 
 				});
 				$('#bookings-driver-button').click(function() {
 					window.location.href = '<?= BASEURL; ?>home_driver/bookingList';
