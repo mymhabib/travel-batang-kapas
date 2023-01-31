@@ -25,5 +25,12 @@ class Admin_model
         $this->db->execute();
         return $this->db->rowCount();
     }
+    public function getAllBookings()
+    {
+        $this->db->query('SELECT bookings.*, users.nama as nama_user, users.telp as telp_user, drivers.nama as nama_driver, drivers.telp as telp_driver FROM bookings left outer join users on bookings.userId = users.userId left outer join drivers on bookings.driverId = drivers.driverId ORDER BY bookings.selesai, bookings.driverId ASC');
+        return $this->db->resultSet();
+    }
 
 }
+
+

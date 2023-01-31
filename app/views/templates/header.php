@@ -81,6 +81,9 @@
 								</li>
 								<?php if ($_SESSION['tbkb_driver_id'] == 1) { ?>
 									<li>
+										<a class="dropdown-item" id="all-bookings-button">Semua Pesanan</a>
+									</li>
+									<li>
 										<a class="dropdown-item" id="driver-button">Daftar Driver</a>
 									</li>
 									<li>
@@ -118,6 +121,9 @@
 					});
 					$('#logout-driver-button').click(function() {
 						window.location.href = '<?= BASEURL; ?>driver/logout';
+					});
+					$('#all-bookings-button').click(function() {
+						window.location.href = '<?= BASEURL; ?>admin/getAllBookings';
 					});
 					$('#driver-button').click(function() {
 						window.location.href = '<?= BASEURL; ?>admin/driver';

@@ -28,6 +28,29 @@ class Admin extends Controller
         }
     }
 
+    public function getAllBookings()
+    {
+        if (!isset($_SESSION['tbkb_driver_id'])) {
+            header('Location:' . BASEURL . 'home/v1');
+            exit;
+        }
+        if ($_SESSION['tbkb_driver_id'] != 1) {
+            Flasher::setFlash('Halaman pendaftaran driver hanya untuk admin', '', 'danger');
+            header('Location:' . BASEURL . 'home_driver');
+            exit;
+        } else {
+            $data['judul'] = 'Semua Booking';
+            $data['kosong'] = '';
+            $data['all_bookings'] = $this->model('Admin_model')->getAllBookings();
+            if (count($data['all_bookings']) <= 0) {
+                $data['kosong'] = 'Tidak ada data';
+            }
+            $this->view('templates/header', $data);
+            $this->view('admin/all_bookings', $data);
+            $this->view('templates/footer');
+        }
+    }
+
     public function noaccess()
     {
         $data['judul'] = 'Tidak ada akses';
