@@ -28,7 +28,7 @@ class Admin extends Controller
         }
     }
 
-    public function getAllBookings()
+    public function AllBookings()
     {
         if (!isset($_SESSION['tbkb_driver_id'])) {
             header('Location:' . BASEURL . 'home/v1');

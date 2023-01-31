@@ -123,7 +123,7 @@
 						window.location.href = '<?= BASEURL; ?>driver/logout';
 					});
 					$('#all-bookings-button').click(function() {
-						window.location.href = '<?= BASEURL; ?>admin/getAllBookings';
+						window.location.href = '<?= BASEURL; ?>admin/AllBookings';
 					});
 					$('#driver-button').click(function() {
 						window.location.href = '<?= BASEURL; ?>admin/driver';
