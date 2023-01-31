@@ -1,6 +1,10 @@
 <?php
 class Admin extends Controller
 {
+    public function index(){
+        header('Location:' . BASEURL . 'admin/driver');
+        exit;
+    }
     public function driver()
     {
         if (!isset($_SESSION['tbkb_driver_id'])) {

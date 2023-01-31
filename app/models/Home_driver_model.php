@@ -25,6 +25,14 @@ class Home_driver_model
         return $this->db->resultSet();
     }
 
+    public function getBookingHistory()
+    {
+        $driverId = $_SESSION['tbkb_driver_id'];
+        $this->db->query('SELECT users.nama, users.telp, ' . $this->table . '.* FROM ' . $this->table . ' INNER JOIN users ON ' . $this->table . '.userId=users.userId WHERE driverId = :driverId and selesai = 1 ORDER BY tanggal ASC');
+        $this->db->bind(':driverId', $driverId);
+        return $this->db->resultSet();
+    }
+
 
     public function terimaBooking(){
         $bookingId = $_POST['bookingId'];

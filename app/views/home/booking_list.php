@@ -33,7 +33,7 @@ function isOnMobile()
 
 <div class="container" align="center">
     <h1>
-        <p class="text-center text-uppercase fw-bold">Daftar Pesanan Anda</p>
+        <p class="text-center text-uppercase text-white fw-bold">Daftar Pesanan Anda</p>
     </h1>
     <div class="container mt-4" align="center">
         <div class="col-lg-4">
@@ -43,11 +43,11 @@ function isOnMobile()
     <div class="row row-cols-sm-1 cols-xl-1 mt-4 pt-4" style="max-width: 400px;">
         <?php foreach ($data['bookings'] as $book) : ?>
             <a href="<?php echo BASEURL; ?>home/bookingDetail/<?php echo $book['bookingId']; ?>" style="text-decoration:none;">
-                <div class="card text-center ml-4 mb-4">
+                <div class="card border-secondary text-white bg-dark text-center ml-4 mb-4">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $book['dari']; ?> - <?php echo $book['tujuan']; ?></h5>
-                        <p class="text-muted card-subtitle"><?php echo $book['tanggal']; ?> <?php echo $book['jam']; ?></p>
-                        <p class="text-muted card-subtitle"><?php echo $book['jumlah_penumpang']; ?> Penumpang</p>
+                        <p class="card-subtitle "><?php echo $book['tanggal']; ?> <?php echo $book['jam']; ?></p>
+                        <p class="card-subtitle "><?php echo $book['jumlah_penumpang']; ?> Penumpang</p>
                         <?php
                         if ($book['driverId'] == 0) {
                             echo

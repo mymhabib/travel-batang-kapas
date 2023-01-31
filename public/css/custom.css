@@ -292,3 +292,5 @@ footer {
     transition: none;
 }
 
+/* invert color */
+.invert { filter: invert(100%); }

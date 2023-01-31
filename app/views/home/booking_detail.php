@@ -37,10 +37,10 @@ $driverDetail = $data['driver_detail'];
 
     ?>
         <div class="container mt-5 pt-5 row d-flex justify-content-center">
-            <div class="card mx-auto rounded-sm" style="width: 30rem;">
+            <div class="card mx-auto rounded-sm border-secondary text-white bg-dark" style="width: 30rem;">
                 <div class="card-body">
                     <!-- <h4 class="card-title">Pesanan anda</h4> -->
-                    <div class="card-body">
+                    <div>
                         <h5 class="card-title"><?php echo $book['dari']; ?> - <?php echo $book['tujuan']; ?></h5>
                         <p class="text-muted card-subtitle"><?php echo $book['tanggal']; ?> <?php echo $book['jam']; ?></p>
                         <p class="text-muted card-subtitle"><?php echo $book['jumlah_penumpang']; ?> Penumpang</p>
@@ -98,10 +98,10 @@ $driverDetail = $data['driver_detail'];
     } else {
     ?>
         <div class="mt-5 pt-5 row d-flex justify-content-center">
-            <div class="card rounded-sm m-auto" style="width: 35rem;">
+            <div class="card rounded-sm m-auto border-secondary text-white bg-dark" style="width: 35rem;">
                 <div class="card-body">
                     <!-- <h5 class="card-title"></h5> -->
-                    <div class="card-body">
+                    <div>
                         <h5 class="card-title"><?php echo $book['dari']; ?> - <?php echo $book['tujuan']; ?></h5>
                         <p class="text-muted card-subtitle"><?php echo $book['tanggal']; ?> <?php echo $book['jam']; ?></p>
                         <p class="text-muted card-subtitle"><?php echo $book['jumlah_penumpang']; ?> Penumpang</p>

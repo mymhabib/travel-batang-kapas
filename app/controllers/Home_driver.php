@@ -8,6 +8,10 @@ class Home_driver extends controller
             header('Location:' . BASEURL . 'home/v1');
             exit;
         }
+        if ($_SESSION['tbkb_driver_id']==1){
+            header('Location:' . BASEURL . 'admin');
+            exit;
+        }
         if (isset($_SESSION['tbkb_driver_id'])) {
             $data['judul'] = 'List Pesanan';
             $data['kosong'] = '';
@@ -26,6 +30,10 @@ class Home_driver extends controller
 
     public function acceptBooking()
     {
+        if ($_SESSION['tbkb_driver_id']==1){
+            header('Location:' . BASEURL . 'admin');
+            exit;
+        }
         if (isset($_SESSION['tbkb_driver_id'])) {
             if ($this->model('Home_driver_model')->terimaBooking() > 0) {
                 Flasher::setFlash('Pesanan', ' diterima', 'success');
@@ -44,6 +52,10 @@ class Home_driver extends controller
 
     public function bookingList()
     {
+        if ($_SESSION['tbkb_driver_id']==1){
+            header('Location:' . BASEURL . 'admin');
+            exit;
+        }
         if (isset($_SESSION['tbkb_driver_id'])) {
             $data['judul'] = 'Pesanan yang anda terima';
             $data['kosong'] = '';
@@ -59,9 +71,34 @@ class Home_driver extends controller
             exit;
         }
     }
+    public function bookingHistory()
+    {
+        if ($_SESSION['tbkb_driver_id']==1){
+            header('Location:' . BASEURL . 'admin');
+            exit;
+        }
+        if (isset($_SESSION['tbkb_driver_id'])) {
+            $data['judul'] = 'Pesanan yang anda terima';
+            $data['kosong'] = '';
+            $data['hist_booking'] = $this->model('Home_driver_model')->getBookingHistory();
+            if (count($data['hist_booking']) <= 0) {
+                $data['kosong'] = 'Tidak ada data';
+            }
+            $this->view('templates/header', $data);
+            $this->view('home_driver/booking_history', $data);
+            $this->view('templates/footer');
+        } else {
+            header('Location:' . BASEURL . 'home/v1');
+            exit;
+        }
+    }
 
     public function finishTrip()
     {
+        if ($_SESSION['tbkb_driver_id']==1){
+            header('Location:' . BASEURL . 'admin');
+            exit;
+        }
         if (isset($_SESSION['tbkb_driver_id'])) {
             if ($this->model('Home_driver_model')->finish() > 0) {
                 Flasher::setFlash('Perjalanan', ' ini selesai', 'success');

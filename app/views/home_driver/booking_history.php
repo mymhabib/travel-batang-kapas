@@ -8,16 +8,6 @@
         box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
         transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
     }
-    .form-select {
-        background-color: dimgray;
-        color: white;
-    }
-
-    .form-control {
-        background-color: dimgray;
-        color: white;
-    }
-    .invert { filter: invert(100%); }
 
 
     /* .card:hover {
@@ -43,7 +33,7 @@ function isOnMobile()
 
 <div class="container" align="center">
     <h1>
-        <p class="text-center text-uppercase text-white fw-bold">Daftar Pesanan yang Anda Terima</p>
+        <p class="text-center text-uppercase text-white fw-bold">Riwayat Pesanan</p>
     </h1>
     <div class="container mt-4" align="center">
         <div class="col-lg-4">
@@ -52,13 +42,31 @@ function isOnMobile()
     </div>
     <div class="row row-cols-sm-1 cols-xl-1 mt-4 pt-4" style="max-width: 400px;">
         <?php $counter = 1; ?>
-        <?php foreach ($data['acc_booking'] as $book) : ?>
+        <?php foreach ($data['hist_booking'] as $book) : ?>
             <?php $counter++; ?>
             <div class="card border-secondary text-white bg-dark text-center ml-4 mb-4">
                 <a class="btn text-white" data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">
                     <div class="card-title" id="heading<?php echo $counter; ?>">
                         <?php echo $book['dari']; ?> - <?php echo $book['tujuan']; ?>
                         <p class=" text-muted card-subtitle"><?php echo $book['tanggal']; ?> <?php echo $book['jam']; ?></p>
+                        <?php
+                        if ($book['driverId'] == 0) {
+                            echo
+                            '<div class="text-wrap badge bg-secondary">
+                            <p class="text-light card-subtitle">Belum ada driver</p>
+                            </div>';
+                        } else if ($book['selesai'] == 1) {
+                            echo
+                            '<div class="text-wrap badge bg-success">
+                            <p class="text-light card-subtitle">Perjalanan selesai</p>
+                            </div>';
+                        } else if ($book['driverId'] != 0) {
+                            echo
+                            '<div class="text-wrap badge bg-info">
+                            <p class="text-light card-subtitle">Sudah ada driver</p>
+                            </div>';
+                        }
+                        ?>
                     </div>
                 </a>
 
@@ -68,7 +76,7 @@ function isOnMobile()
                             <div class="row">
                                 <div class="col">
                                     <div class="form mb-2">
-                                        <input type="text" class="form-control" style="background-color: dimgray; color: white;" id="nama" name="nama" value="<?php echo $book['nama']; ?>" readonly>
+                                        <input type="text" style="background-color: dimgray; color: white;" class="form-control" id="nama" name="nama" value="<?php echo $book['nama']; ?>" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -91,7 +99,7 @@ function isOnMobile()
                                 </div>
                                 <div class="col">
                                     <div class="form-floating mb-3">
-                                        <textarea type="text" class="form-control" style="display: block; overflow:hidden; resize:none; height:100px; background-color: dimgray; color: white; " id="tujuan" name="tujuan" value="<?php echo $book['tujuan']; ?>" readonly><?php echo $book['tujuan']; ?>
+                                        <textarea type="text" class="form-control" style="display: block; overflow:hidden; resize:none; height:100px; background-color: dimgray; color: white;" id="tujuan" name="tujuan" value="<?php echo $book['tujuan']; ?>" readonly><?php echo $book['tujuan']; ?>
                                         </textarea>
                                         <label for="tujuan">Tujuan</label>
                                     </div>
@@ -122,7 +130,7 @@ function isOnMobile()
                             <div class="row">
                                 <div class="col">
                                     <div class="form-floating mb-3">
-                                        <textarea type="text" class="form-control" style="display: block; overflow:hidden; resize:none; height:80px; background-color: dimgray; color: white;" id="titikJemput" name="titikJemput" value="<?php echo $book['titik_jemput']; ?>" readonly><?php echo $book['titik_jemput']; ?>
+                                        <textarea type="text" class="form-control" style="display: block; overflow:hidden; resize:none; height:80px; background-color: dimgray; color: white; " id="titikJemput" name="titikJemput" value="<?php echo $book['titik_jemput']; ?>" readonly><?php echo $book['titik_jemput']; ?>
                                         </textarea>
                                         <label for="titikJemput">Titik Jemput</label>
                                     </div>
@@ -130,11 +138,7 @@ function isOnMobile()
                             </div>
                         </div>
                         <div class="modal-footer text-center">
-                            <form class="g-3" action="<?php echo BASEURL; ?>home_driver/finishTrip" method="POST">
-                                <input type="hidden" name="bookingId" id="bookingId" value="<?php echo $book['bookingId']; ?>">
-                                <button type="button" class="btn btn-sm btn-secondary text-uppercase fw-bold mb-0" data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">Tutup</button>
-                                <button class="btn btn-sm btn-success text-uppercase fw-bold mb-0" type="submit">Selesai</button>
-                            </form>
+                            <button type="button" class="btn btn-sm btn-secondary text-uppercase fw-bold mb-0" data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">Tutup</button>
                         </div>
                     </div>
                 </div>

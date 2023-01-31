@@ -9,6 +9,19 @@
         transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
     }
 
+    .form-select {
+        background-color: dimgray;
+        color: white;
+    }
+
+    .form-control {
+        background-color: dimgray;
+        color: white;
+    }
+    .invert { filter: invert(100%); }
+
+
+
     /* 
     .card:hover {
         transform: scale(1.05);
@@ -36,18 +49,20 @@ $daftarLokasi = ["-", "Sungai Penuh", "Silaut", "Lunang", "Tapan", "Airpura", "P
 if (isOnMobile()) {
 
 ?>
+
     <div class="container mt-2" align="center">
         <div class="container" align="center">
             <div class="col-lg-4">
                 <?php Flasher::flash(); ?>
             </div>
         </div>
-        <div class="card rounded-lg" style="width: 20rem;" align="center">
+        <div class="card rounded-lg text-white bg-dark" style="width: 20rem;" align="center">
             <div class="card-body">
                 <h5 class="card-title">Where to go</h5>
-                <form class="row g-3" style="margin-top: 10px; position: center; justify-content-md-center; padding-left: 5px;" action="<?php echo BASEURL; ?>home/booking" method="POST">
-                    <div class="form">
-                        <input type="text" class="form-control" id="tanggal" name="tanggal" placeholder="Tanggal Keberangkatan" readonly>
+                <form class="row g-3 text-white " style="margin-top: 10px; position: center; justify-content-md-center; padding-left: 5px;" action="<?php echo BASEURL; ?>home/booking" method="POST">
+                <div class="form-floating">
+                        <input type="text" style="background-color: dimgray; color:white;" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan tanggal" readonly>
+                        <label for=" floatingInput">Tanggal Keberangkatan</label>
                     </div>
                     <div class="form-floating">
                         <select class="form-select" id="dari" name="dari" aria-label="dari">
@@ -60,7 +75,7 @@ if (isOnMobile()) {
                     </div>
                     <div>
                         <!-- make an image as swap button -->
-                        <img src="<?php echo BASEURL; ?>img/swap-vertical.png" alt="swap" id="tombol-swap" onclick="swap()" style="width: 20px; height: 20px;">
+                        <img src="<?php echo BASEURL; ?>img/swap-vertical.png" class="invert" alt="swap" id="tombol-swap" onclick="swap()" style="width: 20px; height: 20px;">
                     </div>
                     <div class="form-floating">
                         <select class="form-select" id="tujuan" name="tujuan" aria-label="tujuan">
@@ -72,7 +87,7 @@ if (isOnMobile()) {
                         <label for="dari">Tujuan</label>
                     </div>
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="titikJemput" name="titikJemput" placeholder="Titik Jemput">
+                        <input type="text" class="form-control" style="background-color: dimgray; color:white;" id="titikJemput" name="titikJemput" placeholder="Titik Jemput">
                         <label for="jumlah">Titik Jemput</label>
                     </div>
                     <div class="form">
@@ -119,7 +134,7 @@ if (isOnMobile()) {
 ?>
 
     <div class="container mt-5" align="center">
-        <div class="card rounded-sm" style="width: 35rem;" align="center">
+        <div class="card rounded-sm text-white bg-dark" style="width: 35rem;" align="center">
             <div class="card-body">
                 <h5 class="card-title">Where to go</h5>
                 <form class="row g-3" style="margin-top: 10px; position: center; padding-left: 5px;" action="<?php echo BASEURL; ?>home/booking" method="POST">
@@ -137,7 +152,7 @@ if (isOnMobile()) {
                         </div>
                         <div class="col-1" style="display: flex; align-items: center;">
 
-                            <img src="<?php echo BASEURL; ?>img/swap-horizontal.png" class="align-top mx-auto" alt="swap" id="tombol-swap" onclick="swap()" style="width: 20px; height: 20px;">
+                            <img src="<?php echo BASEURL; ?>img/swap-horizontal.png" class="align-top mx-auto invert" alt="swap" id="tombol-swap" onclick="swap()" style="width: 20px; height: 20px;">
                         </div>
                         <!-- <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2 rounded-c" id="tombol-swap" onclick="swap()" type="button">Pesan</button> -->
                         <div class="col-5">
@@ -153,11 +168,11 @@ if (isOnMobile()) {
                         </div>
                     </div>
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="titikJemput" name="titikJemput" placeholder="Titik Jemput">
+                        <input type="text" style="background-color: dimgray; color:white;" class="form-control" id="titikJemput" name="titikJemput" placeholder="Titik Jemput">
                         <label for="jumlah">Titik Jemput</label>
                     </div>
                     <div class="form-floating mb-1">
-                        <input type="text" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan tanggal" readonly>
+                        <input type="text" style="background-color: dimgray; color:white;" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan tanggal" readonly>
                         <label for=" floatingInput">Tanggal Keberangkatan</label>
                     </div>
                     <div class="form-floating mb-1">

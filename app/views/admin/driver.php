@@ -33,7 +33,7 @@ function isOnMobile()
 
 <div class="container" align="center">
     <h1>
-        <p class="text-center text-uppercase fw-bold">Daftar Driver</p>
+        <p class="text-center text-uppercase text-white fw-bold">Daftar Driver</p>
     </h1>
     <div class="container mt-4" align="center">
         <div class="col-lg-4">
@@ -44,12 +44,10 @@ function isOnMobile()
         <?php $counter = 1; ?>
         <?php foreach ($data['drivers'] as $drivers) : ?>
             <?php $counter++; ?>
-            <div class="card text-center ml-4 mb-4">
-                <a data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">
+            <div class="card border-secondary text-white bg-dark text-center ml-4 mb-4">
+                <a data-toggle="collapse" class="text-white "data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">
                     <div class="card-title" id="heading<?php echo $counter; ?>">
-                        <button class="btn" type="button" data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">
-                            <h5><?php echo $drivers['nama']; ?></h5>
-                        </button>
+                        <h5><?php echo $drivers['nama']; ?></h5>
                     </div>
                 </a>
 
@@ -59,16 +57,16 @@ function isOnMobile()
                             <div class="row">
                                 <div class="col">
                                     <div class="form mb-2">
-                                        <input type="text" class="form-control" id="email" name="email" value="<?php echo $drivers['email']; ?>" readonly>
+                                        <input type="text" class="form-control" style="background-color: dimgray; color: white;" id="email" name="email" value="<?php echo $drivers['email']; ?>" readonly>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="input-group mb-2">
-                                    <input type="text" class="form-control" id="telp<?php echo $counter; ?>" name="telp" value="<?php echo $drivers['telp']; ?>" readonly>
+                                    <input type="text" class="form-control" style="background-color: dimgray; color: white;" id="telp<?php echo $counter; ?>" name="telp" value="<?php echo $drivers['telp']; ?>" readonly>
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary copy-button" type="button" id="copy-button<?php echo $counter; ?>"><img src="<?= BASEURL; ?>img/copy-icon.png" alt="copy" class="copy-button" style="width: 20px; height: 20px;"></button>
+                                        <button class="btn btn-outline-secondary copy-button invert" type="button" id="copy-button<?php echo $counter; ?>"><img src="<?= BASEURL; ?>img/copy-icon.png" alt="copy" class="copy-button" style="width: 20px; height: 20px;"></button>
                                     </div>
                                 </div>
                             </div>
@@ -76,9 +74,9 @@ function isOnMobile()
                         <div class="modal-footer text-center">
                             <form class="g-3" action="<?php echo BASEURL; ?>admin/hapusDriver" method="POST">
                                 <input type="hidden" name="driverId" id="driverId" value="<?php echo $drivers['driverId']; ?>">
-                                <button type="button" class="btn btn-lg btn-secondary btn-login text-uppercase fw-bold mb-2" data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">Tutup</button>
+                                <button type="button" class="btn btn-sm btn-secondary text-uppercase fw-bold" data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">Tutup</button>
                                 <?php if ($drivers['driverId'] != 1) { ?>
-                                    <button class="btn btn-lg btn-danger btn-login text-uppercase fw-bold mb-2" type="submit">Hapus</button>
+                                    <button class="btn btn-sm btn-danger text-uppercase fw-bold" type="submit">Hapus</button>
                                 <?php } ?>
                             </form>
                         </div>

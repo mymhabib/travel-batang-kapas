@@ -135,7 +135,7 @@ class User extends Controller
 
         $this->view('user/registration', $data);
     }
-    public function verfify($token)
+    public function verify($token)
     {
         if ($this->model('User_model')->verifyToken($token)) {
             // activate the user's account
