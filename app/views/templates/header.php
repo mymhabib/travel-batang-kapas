@@ -169,7 +169,7 @@
 
 	<body>
 
-		<div class="wrapper">
+		<div class="">
 			<!-- Sidebar Holder -->
 			<!-- <nav id="sidebar">
 			<div class="sidebar-header">

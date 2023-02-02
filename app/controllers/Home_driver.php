@@ -114,4 +114,26 @@ class Home_driver extends controller
             exit;
         }
     }
+
+    public function cancelTrip()
+    {
+        if ($_SESSION['tbkb_driver_id']==1){
+            header('Location:' . BASEURL . 'admin');
+            exit;
+        }
+        if (isset($_SESSION['tbkb_driver_id'])) {
+            if ($this->model('Home_driver_model')->cancel() > 0) {
+                Flasher::setFlash('Perjalanan', ' berhasil dibatalkan', 'success');
+                header('Location:' . BASEURL . 'home_driver/bookingList');
+                exit;
+            } else {
+                Flasher::setFlash('Gagal', '', 'danger');
+                header('Location:' . BASEURL . 'home_driver/bookingList');
+                exit;
+            }
+        } else {
+            header('Location:' . BASEURL . 'home/v1');
+            exit;
+        }
+    }
 }

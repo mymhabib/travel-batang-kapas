@@ -8,6 +8,7 @@
         box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
         transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
     }
+
     .form-select {
         background-color: dimgray;
         color: white;
@@ -17,7 +18,12 @@
         background-color: dimgray;
         color: white;
     }
-    .invert { filter: invert(100%); }
+
+    .invert {
+        filter: invert(100%);
+    }
+
+
 
 
     /* .card:hover {
@@ -41,13 +47,14 @@ function isOnMobile()
 }
 ?>
 
+
 <div class="container" align="center">
     <h1>
         <p class="text-center text-uppercase text-white fw-bold">Daftar Pesanan yang Anda Terima</p>
     </h1>
     <div class="container mt-4" align="center">
         <div class="col-lg-4">
-            <?php Flasher::flash();?>
+            <?php Flasher::flash(); ?>
         </div>
     </div>
     <div class="row row-cols-sm-1 cols-xl-1 mt-4 pt-4" style="max-width: 400px;">
@@ -129,15 +136,68 @@ function isOnMobile()
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer text-center">
-                            <form class="g-3" action="<?php echo BASEURL; ?>home_driver/finishTrip" method="POST">
-                                <input type="hidden" name="bookingId" id="bookingId" value="<?php echo $book['bookingId']; ?>">
-                                <button type="button" class="btn btn-sm btn-secondary text-uppercase fw-bold mb-0" data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">Tutup</button>
-                                <button class="btn btn-sm btn-success text-uppercase fw-bold mb-0" type="submit">Selesai</button>
+                        <div class="card-footer text-center container" style="border-top: 1px solid;">
+                            <!-- <form class="g-3" action="<?php echo BASEURL; ?>home_driver/finishTrip" method="POST"> -->
+                            <div class="row justify-content-center">
+                                <div class="col-4">
+                                    <a href="" style="text-decoration:none;" class="btn btn-sm btn-danger text-uppercase fw-bold mb-0 tampilModalBatal" data-bs-toggle="modal" data-bs-target="#modalBatal">Batal</a>
+                                </div>
+                                <div class="col-4">
+                                    <a href="" style="text-decoration:none;" class="btn btn-sm btn-success text-uppercase fw-bold mb-0 tampilModalSelesai" data-bs-toggle="modal" data-bs-target="#modalSelesai">Selesai</a>
+                                </div>
+                                <div class="col-4">
+                                    <button type="button" class="btn btn-sm btn-secondary text-uppercase fw-bold mb-0 justify-content-start" data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapse<?php echo $counter; ?>">Tutup</button>
+
+                                </div>
+                                <!-- <button class="btn btn-sm btn-success text-uppercase fw-bold mb-0" type="submit">Selesai</button> -->
+                            </div>
                             </form>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- modal konfirmasi selesai perjalanan -->
+            <div class="modal fade pt-5" data-bs-backdrop="true" id="modalSelesai" tabindex="-1" aria-labelledby="judulModalSelesai" aria-hidden="true">
+                <form class="" action="<?php echo BASEURL; ?>home_driver/finishTrip" method="POST">
+                    <input type="hidden" name="bookingId" id="bookingId" value="<?php echo $book['bookingId']; ?>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLabelSelesaiBooking">Selesaikan Perjalanan</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h6 class="text-center">Apakah anda yakin ingin menyelesaikan perjalanan ini?</h6>
+                            </div>
+                            <div class="footer text-center">
+                                <button class="btn btn-sm btn-success text-uppercase fw-bold mb-2" type="submit">Ya</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- modal konfirmasi batal perjalanan-->
+            <div class="modal fade pt-5" data-bs-backdrop="true" id="modalBatal" tabindex="-1" aria-labelledby="judulModalBatal" aria-hidden="true">
+                <form class="" action="<?php echo BASEURL; ?>home_driver/cancelTrip" method="POST">
+                    <input type="hidden" name="bookingId" id="bookingId" value="<?php echo $book['bookingId']; ?>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLabelBatalBooking">Batalkan Perjalanan</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h6 class="text-center">Apakah anda yakin ingin membatalkan perjalanan ini?</h6>
+                            </div>
+                            <div class="footer text-center">
+                                
+                                <button class="btn btn-lg btn-danger btn-login text-uppercase fw-bold mb-2" type="submit">Ya</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         <?php endforeach; ?>
     </div>

@@ -50,21 +50,16 @@ function isOnMobile()
                         <?php echo $book['dari']; ?> - <?php echo $book['tujuan']; ?>
                         <p class=" text-muted card-subtitle"><?php echo $book['tanggal']; ?> <?php echo $book['jam']; ?></p>
                         <?php
-                        if ($book['driverId'] == 0) {
-                            echo
-                            '<div class="text-wrap badge bg-secondary">
-                            <p class="text-light card-subtitle">Belum ada driver</p>
-                            </div>';
-                        } else if ($book['selesai'] == 1) {
+                        if ($book['selesai'] == 1) {
                             echo
                             '<div class="text-wrap badge bg-success">
-                            <p class="text-light card-subtitle">Perjalanan selesai</p>
-                            </div>';
-                        } else if ($book['driverId'] != 0) {
+                                <p class="text-light card-subtitle">Perjalanan selesai</p>
+                                </div>';
+                        } else if ($book['selesai'] == 2) {
                             echo
-                            '<div class="text-wrap badge bg-info">
-                            <p class="text-light card-subtitle">Sudah ada driver</p>
-                            </div>';
+                            '<div class="text-wrap badge bg-danger">
+                                <p class="text-light card-subtitle">Perjalanan dibatalkan</p>
+                                </div>';
                         }
                         ?>
                     </div>

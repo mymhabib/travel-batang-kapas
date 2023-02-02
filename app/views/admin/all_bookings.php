@@ -71,16 +71,23 @@ function isOnMobile()
                         '<div class="text-wrap badge bg-secondary">
                         <p class="text-light card-subtitle">Belum ada driver</p>
                         </div>';
-                    } else if ($book['selesai'] == 1) {
-                        echo
-                        '<div class="text-wrap badge bg-success">
-                        <p class="text-light card-subtitle">Perjalanan selesai</p>
-                        </div>';
-                    } else if ($book['driverId'] != 0) {
-                        echo
-                        '<div class="text-wrap badge bg-info">
-                        <p class="text-light card-subtitle">Sudah ada driver</p>
-                        </div>';
+                    } else {
+                        if ($book['selesai'] == 0) {
+                            echo
+                            '<div class="text-wrap badge bg-info">
+                            <p class="text-light card-subtitle">Sudah ada driver</p>
+                            </div>';
+                        } else if ($book['selesai'] == 1) {
+                            echo
+                            '<div class="text-wrap badge bg-success">
+                            <p class="text-light card-subtitle">Perjalanan selesai</p>
+                            </div>';
+                        } else if ($book['selesai'] == 2) {
+                            echo
+                            '<div class="text-wrap badge bg-danger">
+                            <p class="text-light card-subtitle">Perjalanan dibatalkan</p>
+                            </div>';
+                        }
                     }
                     ?>
                 </a>
