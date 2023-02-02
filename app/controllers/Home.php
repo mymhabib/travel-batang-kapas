@@ -94,11 +94,11 @@ class Home extends controller
         }
         if (isset($_SESSION['tbkb_user_id'])) {
             if ($this->model('Home_model')->hapusData() > 0) {
-                Flasher::setFlash('berhasil', ' dihapus', 'success');
+                Flasher::setFlash('Berhasil', ' dihapus', 'success');
                 header('Location:' . BASEURL . 'home/bookingList');
                 exit;
             } else {
-                Flasher::setFlash('gagal', 'dihapus', 'danger');
+                Flasher::setFlash('Gagal', ' dihapus', 'danger');
                 header('Location:' . BASEURL . 'home/bookingList');
                 exit;
             }

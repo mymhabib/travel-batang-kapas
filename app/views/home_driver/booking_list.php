@@ -47,7 +47,7 @@ function isOnMobile()
     </h1>
     <div class="container mt-4" align="center">
         <div class="col-lg-4">
-            <?php Flasher::flash(); ?>
+            <?php Flasher::flash();?>
         </div>
     </div>
     <div class="row row-cols-sm-1 cols-xl-1 mt-4 pt-4" style="max-width: 400px;">

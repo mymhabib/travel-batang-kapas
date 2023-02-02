@@ -136,7 +136,7 @@ if (isOnMobile()) {
     <div class="container mt-5" align="center">
         <div class="card rounded-sm text-white bg-dark" style="width: 35rem;" align="center">
             <div class="card-body">
-                <h5 class="card-title">Where to go</h5>
+                <h3 class="card-title">Where to go</h3>
                 <form class="row g-3" style="margin-top: 10px; position: center; padding-left: 5px;" action="<?php echo BASEURL; ?>home/booking" method="POST">
                     <div class="row g-2 justify-content-md-center">
                         <div class="col-5">
