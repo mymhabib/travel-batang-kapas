@@ -1,7 +1,4 @@
 .DS_Store
 /vendor/
-<<<<<<< HEAD
 config.php
-=======
 core/config/config.php
->>>>>>> 25accb3467869e3aa1769b2aff74eb127c8c2423
